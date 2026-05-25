@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>KINGS CAMISAS</title>
+
+
+
+<link rel="stylesheet" href="\FRONT\style.css">
+
+
+
+
+</head>
+
+<body>
+
+<!-- HERO -->
+
+<!-- HERO -->
+
+<section class="hero">
+
+
+
+
+
+
+<!-- TOPO -->
+
+<div class="topbar">
+
+<div class="top-left">
+
+<button class="sidebar-toggle" onclick="toggleSidebar()">
+☰
+</button>
+
+<div class="logo-top">
+<img src="LOGO/kcbola.png">
+</div>
+
+</div>
+
+<div class="top-search">
+
+<input
+type="text"
+id="searchTop"
+placeholder="Buscar camisa, seleção, retrô..."
+>
+
+</div>
+
+<div class="top-right">
+
+<button class="cart-top" onclick="toggleCart()">
+🛒
+<span id="cartCount">0</span>
+</button>
+
+</div>
+
+</div>
+
+
+
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<h3>COLEÇÕES</h3>
+
+<button onclick="filter('todos',this)">
+ Todas
+</button>
+
+<button onclick="filter('retro',this)">
+ Retrô
+</button>
+
+
+<button onclick="filter('brasil',this)">
+ Brasil
+</button>
+
+<button onclick="filter('selecoes',this)">
+ Seleções
+</button>
+
+<button onclick="filter('europa',this)">
+ Europa
+</button>
+
+<button onclick="filter('promocao',this)">
+ Promoções 💸
+</button>
+
+</div>
+
+<!-- LOGIN -->
+
+<div id="loginScreen" style="
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#0e0e0e;
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:9999;
+">
+
+<div style="text-align:center">
+
+<h2 style="color:gold;margin-bottom:20px">
+Digite seu número para entrar
+</h2>
+
+<input
+id="phoneLogin"
+placeholder="Seu número"
+type="tel"
+inputmode="numeric"
+style="
+padding:12px;
+width:220px;
+border-radius:8px;
+border:none;
+margin-bottom:15px;
+font-size:16px;
+">
+
+<br>
+
+<button onclick="login()" style="
+background:gold;
+border:none;
+padding:10px 30px;
+border-radius:20px;
+cursor:pointer;
+">
+Entrar
+</button>
+
+</div>
+
+</div>
+
+<!-- HERO CONTENT -->
+
+<div class="hero-content">
+
+<img src="LOGO/kcbola.png" class="hero-logo">
+
+<h1>KINGS CAMISAS</h1>
+
+<p class="hero-sub">
+AS MELHORES CAMISAS IMPORTADAS
+</p>
+
+<div class="hero-line"></div>
+
+<p class="hero-text">
+Vista sua paixão. Faça história.
+</p>
+
+<button class="enter-btn" onclick="scrollCatalog()">
+VER CATÁLOGO
+</button>
+
+</div>
+
+</section>
+
+<!-- DESTAQUE CAMISA -->
+
+<section class="highlight">
+
+<div class="highlight-grid">
+
+<div class="highlight-item big">
+<img id="imgBig">
+</div>
+
+<div class="highlight-side">
+
+<div class="highlight-item">
+<img id="imgSmall1">
+</div>
+
+<div class="highlight-item">
+<img id="imgSmall2">
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CATALOGO -->
+
+<header id="catalog">
+<h1>KINGS CAMISAS</h1>
+</header>
+
+<div id="devPanel" style="display:none;text-align:center;padding:20px">
+
+<button onclick="openAddProduct()" style="
+background:gold;
+border:none;
+padding:12px 25px;
+border-radius:20px;
+cursor:pointer;
+">
++ ADICIONAR PRODUTO
+</button>
+
+</div>
+
+<!-- FILTROS REMOVIDOS -->
+
+<div class="container" id="products"></div>
+
+
+
+
+<script src="/BACKEND/CAMISAS/products.js"></script>
+<script src="/BACKEND/CAMISAS/config.js"></script>
+
+<script>
+
+
+async function loadDriveFolder(folderId){
+
+try{
+
+const res = await fetch(
+`${CONFIG.GOOGLE_SCRIPT}?folder=${folderId}`
+)
+
+const data = await res.json()
+
+if(!data.success){
+
+console.error(data.error)
+
+return {
+images:[],
+videos:[]
+}
+
+}
+
+return data
+
+}catch(err){
+
+console.error(err)
+
+return {
+images:[],
+videos:[]
+}
+
+}
+
+}
+
+
+window.onload=function(){
+
+let phoneSalvo = localStorage.getItem("clienteTelefone")
+
+if(phoneSalvo){
+
+document.getElementById("loginScreen").style.display = "none"
+
+}
+
+}
+
+
+let devMode=false
+
+function login(){
+
+let phone=document.getElementById("phoneLogin").value
+
+if(phone=="38999624223"){
+alert("Digite seu número")
+return
+}
+
+/* SALVAR NA PLANILHA */
+
+fetch("https://script.google.com/macros/s/AKfycbyw8Hk_qrdxduVBkY_5syDnM_x7085dIvR4gkLP3TRfLwbwYpgQYn-xhunbKavGobIj/exec",{
+method:"POST",
+body:new URLSearchParams({
+phone:phone
+})
+})
+
+localStorage.setItem("clienteTelefone", phone)
+
+document.getElementById("loginScreen").style.display="none"
+
+}
+
+
+/* COLEÇÕES EM DESTAQUE */
+
+const highlights=[
+
+{
+name:"BRASIL 2026",
+big:"https://drive.google.com/thumbnail?id=15M_sUyoxkX7jxZuitn0Kp42VZ9EZ9MHt&sz=w1000",
+small1:"https://drive.google.com/thumbnail?id=1vqJss-5VHnT8Wqh4R0ix88NWCx5uXa7p&sz=w1000",
+small2:"https://drive.google.com/thumbnail?id=1IQ7wiJ5bp6tQHQZymCpWV9NO6O1zEG8K&sz=w1000"
+},
+
+
+{
+name:"BRASIL FEMININO 2026",
+big:"https://drive.google.com/thumbnail?id=1D0UvU8HC-ggsT1eaQ3jAl2oKuatMidbH&sz=w1000",
+small1:"https://drive.google.com/thumbnail?id=1KDv2sgFIH0JTtSy55W3DTJ77PYZiA16N&sz=w1000",
+small2:"https://drive.google.com/thumbnail?id=1b-gMEM6CgVbYL5WZxhvT0RlrQn5IOW6p&sz=w1000"
+},
+
+{
+name:"BRASIL 2° 2026",
+big:"https://drive.google.com/thumbnail?id=1TQT_U_9F_JX4LuG1Kc5lqAU_tVcKrF1U&sz=w1000",
+small1:"https://drive.google.com/thumbnail?id=14w26cOCU80N7H99eJNvJvE6Mb0ySoeUs&sz=w1000",
+small2:"https://drive.google.com/thumbnail?id=15k6duM4GPOH6HQMnKblrxDXvnSDEZUz5&sz=w1000"
+}
+
+]
+
+let highlightIndex=0
+
+function preload(src){
+
+return new Promise(resolve=>{
+
+const img = new Image()
+
+img.src = src
+
+img.onload = resolve
+
+})
+
+}
+
+async function showHighlight(){
+
+let h = highlights[highlightIndex]
+
+/* PRELOAD */
+
+await Promise.all([
+
+preload(h.big),
+preload(h.small1),
+preload(h.small2)
+
+])
+
+const big =
+document.getElementById("imgBig")
+
+const small1 =
+document.getElementById("imgSmall1")
+
+const small2 =
+document.getElementById("imgSmall2")
+
+/* FADE OUT */
+
+big.style.opacity = 0
+small1.style.opacity = 0
+small2.style.opacity = 0
+
+setTimeout(()=>{
+
+big.src = h.big
+small1.src = h.small1
+small2.src = h.small2
+
+big.style.opacity = 1
+small1.style.opacity = 1
+small2.style.opacity = 1
+
+},300)
+
+highlightIndex++
+
+if(highlightIndex >= highlights.length){
+
+highlightIndex = 0
+
+}
+
+}
+
+showHighlight()
+setInterval(showHighlight,5000)
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+document
+.querySelector(".highlight-grid")
+.classList.add("show")
+
+}
+
+})
+
+})
+
+observer.observe(document.querySelector(".highlight-grid"))
+
+
+
+function scrollCatalog(){
+
+document
+.getElementById("catalog")
+.scrollIntoView({
+behavior:"smooth"
+})
+
+/* ESCONDER DESTAQUES */
+
+document.querySelector(".highlight")
+.style.display="none"
+
+}
+
+
+
+const container=document.getElementById("products")
+
+function render(list){
+
+container.innerHTML=""
+
+list.forEach((p)=>{
+
+let tag=p.ready
+?'<span class="tag ready">PRONTA ENTREGA</span>'
+:'<span class="tag order">POR ENCOMENDA</span>'
+
+container.innerHTML+=`
+
+<div class="card" onclick="openProduct('${p.name}')">
+
+<img src="${p.images[0]}">
+
+<div class="card-body">
+
+<h3>${p.name}</h3>
+
+${p.promotion ? `
+
+<div class="price-box">
+
+<span class="discount-badge">
+PROMOÇÃO
+</span>
+
+<span class="old-price">
+${p.oldPrice}
+</span>
+
+<span class="promo-price">
+${p.price}
+</span>
+
+</div>
+
+` : `
+
+<p class="price">${p.price}</p>
+
+`}
+
+${tag}
+
+</div>
+
+</div>
+
+`
+
+})
+
+}
+
+async function prepareProducts(){
+
+for(const product of products){
+
+if(product.folder){
+
+product.images =
+await loadDriveFolder(product.folder)
+
+}
+
+}
+
+render(products)
+
+}
+
+prepareProducts()
+
+function filter(cat,btn){
+
+document.querySelectorAll(".filters button")
+.forEach(b=>b.classList.remove("active"))
+
+btn.classList.add("active")
+
+/* TODOS */
+
+if(cat==="todos"){
+
+render(products)
+return
+
+}
+
+/* PRONTA ENTREGA */
+
+if(cat==="pronta"){
+
+render(products.filter(p=>p.ready))
+return
+
+}
+
+/* PROMOÇÃO */
+
+if(cat==="promocao"){
+
+let promos = products.filter(p => p.promotion)
+
+render(promos)
+
+return
+
+}
+
+/* OUTRAS CATEGORIAS */
+
+let filtered = products.filter(p=>{
+
+if(Array.isArray(p.category)){
+
+return p.category.includes(cat)
+
+}
+
+return p.category===cat
+
+})
+
+render(filtered)
+
+}
+
+function openProduct(name){
+
+let p = products.find(prod => prod.name === name)
+
+currentProduct = p
+
+document.getElementById("modal").style.display="flex"
+
+document.getElementById("title").innerText=p.name
+
+document.getElementById("price").innerHTML = p.promotion ?
+
+`
+
+<div class="price-box">
+
+<span class="discount-badge">
+🔥 OFERTA ESPECIAL
+</span>
+
+<span class="old-price">
+${p.oldPrice}
+</span>
+
+<span class="promo-price">
+${p.price}
+</span>
+
+</div>
+
+`
+
+:
+
+`
+
+<div class="price-box">
+
+<span class="promo-price">
+${p.price}
+</span>
+
+</div>
+
+`
+
+document.getElementById("desc").innerHTML = Array.isArray(p.desc) 
+? p.desc.join("<br>") 
+: p.desc
+document.getElementById("mainImg").src=p.images[0]
+let video=document.getElementById("productVideo")
+
+if(p.video){
+
+video.src=p.video
+video.style.display="block"
+
+}else{
+
+video.style.display="none"
+video.src=""
+
+}
+
+
+let thumbs=""
+
+p.images.forEach(img=>{
+thumbs+=`<img src="${img}" onclick="changeImg('${img}')">`
+})
+
+document.getElementById("thumbs").innerHTML=thumbs
+
+let sizes=""
+
+p.sizes.forEach(s=>{
+sizes+=`<span>${s}</span>`
+})
+
+document.getElementById("sizes").innerHTML=sizes
+
+document.getElementById("status").innerHTML=p.ready
+?'<span class="tag ready">PRONTA ENTREGA</span>'
+:'<span class="tag order">POR ENCOMENDA</span>'
+
+let msg=encodeURIComponent(
+"Olá, tenho interesse na camisa "+p.name
+)
+
+document.getElementById("buy").href=
+"https://wa.me/5538999624223?text="+msg
+
+}
+
+function changeImg(src){
+document.getElementById("mainImg").src=src
+}
+
+function closeModal(){
+document.getElementById("modal").style.display="none"
+}
+
+document
+.getElementById("searchTop")
+.addEventListener("input",e=>{
+
+let v = e.target.value.toLowerCase()
+
+let filtered = products.filter(p=>
+p.name.toLowerCase().includes(v)
+)
+
+render(filtered)
+
+})
+
+
+function openAddProduct(){
+
+document.getElementById("addProductModal").style.display="flex"
+
+}
+
+function saveProduct(){
+
+let name=document.getElementById("newName").value
+let price=document.getElementById("newPrice").value
+let cat=document.getElementById("newCategory").value
+let sizes=document.getElementById("newSizes").value.split(",")
+let folder=document.getElementById("newFolder").value
+let desc=document.getElementById("newDesc").value
+
+let newProduct={
+
+name:name,
+price:price,
+category:cat,
+ready:true,
+sizes:sizes,
+desc:desc,
+
+images:[
+
+folder+"/FRENTE.JPG",
+folder+"/TRAS.JPG",
+folder+"/ESCUDO.JPG",
+folder+"/GOLA.JPG",
+folder+"/MANGA.JPG"
+
+]
+
+}
+
+products.push(newProduct)
+
+render(products)
+
+document.getElementById("addProductModal").style.display="none"
+
+}
+
+let cart=[]
+
+let selectedShipping = 0
+let selectedShippingName = ""
+
+let currentProduct=null 
+
+
+function addToCart(){
+
+if(!currentProduct) return
+
+let existing=cart.find(item=>item.name===currentProduct.name)
+
+if(existing){
+
+existing.qty++
+
+}else{
+
+cart.push({
+name:currentProduct.name,
+price:parseFloat(
+currentProduct.price.replace("R$","")
+),
+image:currentProduct.images[0],
+qty:1
+})
+
+}
+
+renderCart()
+
+}
+
+function toggleCart(){
+
+document
+.getElementById("cart")
+.classList.toggle("show")
+
+}
+
+function renderCart(){
+
+let cartItems=document.getElementById("cartItems")
+
+cartItems.innerHTML=""
+
+let subtotal=0
+let totalQty=0
+
+cart.forEach((item,index)=>{
+
+subtotal += item.price * item.qty
+totalQty += item.qty
+
+cartItems.innerHTML += `
+
+<div class="cart-item">
+
+<img src="${item.image}">
+
+<div class="cart-info">
+
+<h4>${item.name}</h4>
+
+<p class="cart-price">
+R$${item.price}
+</p>
+
+<div class="qty">
+
+<button onclick="changeQty(${index},-1)">
+-
+</button>
+
+<span>${item.qty}</span>
+
+<button onclick="changeQty(${index},1)">
++
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+`
+
+})
+
+/* DESCONTO */
+
+let discount = 0
+
+if(totalQty >= 4){
+
+discount = subtotal * 0.10
+
+}
+
+/* FRETE */
+
+let shipping = selectedShipping || 0
+
+/* FRETE GRATIS */
+
+if(totalQty >= 5){
+
+shipping = 0
+
+}
+
+/* TOTAL */
+
+let total = subtotal - discount + shipping
+
+/* MENSAGEM PROMO */
+
+let promoMessage = "🔥 Compre 4 camisas e ganhe 10% OFF"
+
+if(totalQty > 0 && totalQty < 4){
+
+let falta = 4 - totalQty
+
+promoMessage = `🛍️ Adicione mais ${falta} camisa(s) para ganhar 10% OFF`
+
+}
+
+if(totalQty >= 4){
+
+promoMessage = "🎉 Você ganhou 10% OFF no pedido"
+
+}
+
+if(totalQty >= 4 && totalQty < 5){
+
+promoMessage = "🚚 Adicione mais 1 camisa para FRETE GRÁTIS"
+
+}
+
+if(totalQty >= 5){
+
+promoMessage = "🔥 FRETE GRÁTIS LIBERADO"
+
+}
+
+/* ATUALIZAR HTML */
+
+document.getElementById("cartPromoMessage")
+.innerText = promoMessage
+
+document.getElementById("cartSubtotal")
+.innerText = `R$${subtotal.toFixed(2)}`
+
+document.getElementById("cartDiscount")
+.innerText = `R$${discount.toFixed(2)}`
+
+document.getElementById("cartShipping")
+.innerText = shipping === 0
+? "GRÁTIS"
+: `R$${shipping.toFixed(2)}`
+
+document.getElementById("cartTotal")
+.innerText = `R$${total.toFixed(2)}`
+
+document.getElementById("cartCount")
+.innerText = totalQty
+
+}
+
+function changeQty(index,change){
+
+cart[index].qty += change
+
+if(cart[index].qty <= 0){
+
+cart.splice(index,1)
+
+}
+
+renderCart()
+
+}
+
+
+async function calculateShipping(){
+
+let cep = document
+.getElementById("cep")
+.value
+.replace(/\D/g,'')
+
+if(cep.length !== 8){
+
+alert("Digite um CEP válido")
+return
+
+}
+
+if(cart.length === 0){
+
+alert("Adicione produtos no carrinho")
+return
+
+}
+
+/* RESETAR FRETE ANTERIOR */
+
+selectedShipping = 0
+selectedShippingName = ""
+
+document.getElementById("shippingOptions").innerHTML = `
+<div class="shipping-loading">
+Calculando frete...
+</div>
+`
+
+let totalWeight = cart.reduce((acc,item)=>{
+   return acc + (item.qty * 0.25)
+},0)
+
+try{
+
+let response = await fetch(
+"https://backend-frete.onrender.com/calcular-frete",
+{
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+cepDestino:cep,
+produtos:cart,
+peso:totalWeight
+
+})
+
+}
+)
+
+let data = await response.json()
+
+renderShippingOptions(data)
+
+}catch(err){
+
+console.log(err)
+
+document.getElementById("shippingOptions").innerHTML = `
+<div class="shipping-error">
+Erro ao calcular frete
+</div>
+`
+
+}
+
+}
+
+function renderShippingOptions(options){
+
+let box = document
+.getElementById("shippingOptions")
+
+box.innerHTML = ""
+
+options.forEach((option,index)=>{
+
+box.innerHTML += `
+
+<div
+class="shipping-option"
+onclick="selectShipping(
+'${option.name}',
+${option.price}
+,this
+)"
+>
+
+<div>${option.name}</div>
+
+<div class="shipping-price">
+R$ ${option.price}
+</div>
+
+<div>
+Prazo: ${option.delivery_time} dias
+</div>
+
+</div>
+
+`
+
+})
+
+}
+
+function selectShipping(name,price,element){
+
+document
+.querySelectorAll(".shipping-option")
+.forEach(el=>el.classList.remove("active"))
+
+element.classList.add("active")
+
+selectedShipping = Number(price)
+
+selectedShippingName = name
+
+/* ESCONDER OPÇÕES */
+
+const optionsBox =
+document.getElementById("shippingOptions")
+
+optionsBox.classList.add("shipping-collapsed")
+
+/* MOSTRAR RESUMO */
+
+document.getElementById("shippingSelected")
+.innerHTML = `
+
+<div class="selected-shipping-info">
+
+<div>
+
+<div class="selected-title">
+${name}
+</div>
+
+<div class="selected-price">
+R$ ${Number(price).toFixed(2)}
+</div>
+
+</div>
+
+<button class="change-shipping-btn"
+onclick="toggleShippingOptions()">
+
+▼
+
+</button>
+
+</div>
+
+`
+
+renderCart()
+
+}
+
+
+function toggleShippingOptions(){
+
+const options =
+document.getElementById("shippingOptions")
+
+options.classList.toggle("shipping-collapsed")
+
+}
+
+
+function finishOrder(){
+
+if(cart.length===0){
+
+alert("Carrinho vazio")
+return
+
+}
+
+let msg="🛒 *NOVO PEDIDO*%0A%0A"
+
+let subtotal=0
+let totalQty=0
+
+cart.forEach(item=>{
+
+subtotal += item.price * item.qty
+
+totalQty += item.qty
+
+msg += `• ${item.name}%0A`
+msg += `Qtd: ${item.qty}%0A`
+msg += `Valor: R$${item.price}%0A%0A`
+
+})
+
+let discount=0
+
+if(totalQty>=2){
+
+discount=subtotal*0.10
+
+}
+
+let shipping = selectedShipping || 0
+
+let total=subtotal-discount+shipping
+
+msg += `--------------------%0A`
+msg += `Subtotal: R$${subtotal.toFixed(2)}%0A`
+msg += `Desconto: R$${discount.toFixed(2)}%0A`
+
+msg += shipping===0
+? `Frete: GRÁTIS%0A`
+: `Frete (${selectedShippingName}): R$${shipping}%0A`
+
+msg += `TOTAL: R$${total.toFixed(2)}`
+
+window.open(
+`https://wa.me/5538999624223?text=${msg}`,
+"_blank"
+)
+
+}
+
+
+
+/* =========================
+   TOGGLE SIDEBAR
+========================= */
+
+function toggleSidebar(){
+
+const sidebar = document.querySelector(".sidebar")
+
+sidebar.classList.toggle("closed")
+
+}
+
+document.querySelector(".sidebar").classList.add("closed")
+
+</script>
+<!-- CARRINHO -->
+
+
+
+
+
+
+<div class="cart" id="cart">
+
+<div class="cart-header">
+
+<h2>Seu Carrinho</h2>
+
+<button onclick="toggleCart()">✕</button>
+
+</div>
+
+
+<div class="cart-content">
+
+<!-- ESQUERDA -->
+<div class="cart-left">
+
+<div id="cartItems"></div>
+
+</div>
+
+<!-- DIREITA -->
+<div class="cart-right">
+
+<div id="cartPromoMessage" class="promo-message">
+🔥 Compre 2 camisas e ganhe 10% OFF
+</div>
+
+<div class="summary-line">
+<span>Subtotal</span>
+<span id="cartSubtotal">R$0</span>
+</div>
+
+<div class="summary-line">
+<span>Desconto</span>
+<span id="cartDiscount">R$0</span>
+</div>
+
+<div class="summary-line">
+<span>Frete</span>
+<span id="cartShipping">R$0</span>
+</div>
+
+<div class="summary-total">
+<span>Total</span>
+<span id="cartTotal">R$0</span>
+</div>
+
+<!-- FRETE -->
+
+<div class="shipping-box">
+
+<h3>Calcular Frete</h3>
+
+<div class="shipping-input">
+
+<input
+type="text"
+id="cep"
+placeholder="Digite seu CEP"
+maxlength="9"
+>
+
+<button onclick="calculateShipping()">
+OK
+</button>
+
+</div>
+
+<div id="shippingOptions" class="shipping-result"></div>
+<div id="shippingSelected"></div>
+</div>
+
+<button class="finish-btn" onclick="finishOrder()">
+FINALIZAR PEDIDO
+</button>
+
+</div>
+
+</div>
+
+
+<div class="modal" id="modal">
+
+<div class="close" onclick="closeModal()">✕</div>
+
+<div class="modal-box">
+
+<div class="gallery">
+<img id="mainImg">
+</div>
+
+<div class="thumbs" id="thumbs"></div>
+
+
+<div class="modal-body">
+
+<h2 id="title"></h2>
+<p class="price" id="price"></p>
+
+<div class="sizes" id="sizes"></div>
+<div class="desc" id="desc"></div>
+<div id="status"></div>
+
+<div class="actions">
+
+<button class="cart-btn" onclick="addToCart()">
+🛒 Adicionar
+</button>
+
+<a id="buy" class="buy" target="_blank">
+Comprar Agora
+</a>
+
+</div>
+
+
+<iframe
+id="productVideo"
+allow="autoplay"
+allowfullscreen
+style="
+width:100%;
+height:320px;
+border:none;
+display:none;
+border-radius:12px;
+">
+</iframe>
+
+
+</div>
+</div>
+</div>
+<div id="addProductModal" class="modal">
+
+<div class="modal-box">
+
+<div class="modal-body">
+
+<h2>Novo Produto</h2>
+
+<input id="newName" placeholder="Nome"><br><br>
+
+<input id="newPrice" placeholder="Preço"><br><br>
+
+<input id="newCategory" placeholder="Categoria"><br><br>
+
+<input id="newSizes" placeholder="Tamanhos (P,M,G)"><br><br>
+
+<input id="newFolder" placeholder="Pasta imagens EX: IMAGENS/FLAMENGO-26"><br><br>
+
+<textarea id="newDesc" placeholder="Descrição"></textarea><br><br>
+
+<button onclick="saveProduct()">Salvar</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+</body>
+</html>
