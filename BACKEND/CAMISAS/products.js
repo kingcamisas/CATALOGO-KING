@@ -481,6 +481,27 @@ images:[
 
 ]
 },
+{
+name:"PORTUGAL 2026",
+price:"R$150",
+oldPrice:"R$120",
+promotion:true,
+category:"selecao",
+ready:false,
+sizes:["P","M","G","GG"],
+desc:"Descrição",
+
+images:[
+
+"https://drive.google.com/thumbnail?id=19tlD2E9dPwnhDXvDbht-XForCpeC5p0F&sz=w1200",
+"https://drive.google.com/thumbnail?id=1UXq4MLeZB9rqwdJj6ERo8X1NZAH8pghV&sz=w1200",
+"https://drive.google.com/thumbnail?id=19bdmk24x_YkBoRG5-hLUZH5EFliHzWWm&sz=w1200",
+"https://drive.google.com/thumbnail?id=1lHvTqSVr1bT0uve8uJPgW6vqMe_8V2tU&sz=w1200",
+"https://drive.google.com/thumbnail?id=1z-Lw6YurEXfbuQmUueHogWhz9Pl4zuV0&sz=w1200",
+"https://drive.google.com/thumbnail?id=1cqP_vAiWG0qIqv5IKU7vjXAC0zwHNKmt&sz=w1200",
+
+]
+},
 ];
 
 window.products = products;

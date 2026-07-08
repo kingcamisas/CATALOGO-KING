@@ -142,8 +142,8 @@ images:[
 },
 {
 name:"BRASIL 2026/27",
-price:"R$150",
-oldPrice:"R$170",
+price:"R$110",
+oldPrice:"R$150",
 promotion:true,
 category:["brasil","selecoes"],
 ready:false,
@@ -166,8 +166,8 @@ video:"https://drive.google.com/file/d/1qUWkLGxjTfVVLU6t_DwKx1pFswHRzDHC/preview
 },
 {
 name:"BRASIL 2° 2026/27",
-price:"R$150",
-oldPrice:"R$170",
+price:"R$110",
+oldPrice:"R$150",
 promotion:true,
 category:["brasil","selecoes"],
 ready:false,
@@ -191,8 +191,8 @@ images:[
 },
 {
 name:"BRASIL FEMININO 2026/27",
-price:"R$150",
-oldPrice:"R$170",
+price:"R$110",
+oldPrice:"R$150",
 promotion:true,
 category:["brasil","selecoes"],
 ready:false,
@@ -373,8 +373,8 @@ images:[
 },
 {
 name:"MEXICO 2026",
-price:"R$150",
-oldPrice:"R$180",
+price:"R$120",
+oldPrice:"R$150",
 promotion:true,
 category:"selecoes",
 ready:false,
@@ -440,8 +440,8 @@ images:[
 },
 {
 name:"BRASIL 2° FEMININA",
-price:"150",
-oldPrice:"180",
+price:"110",
+oldPrice:"150",
 promotion:true,
 category:"brasil",
 ready:false,
@@ -456,6 +456,28 @@ images:[
 "https://drive.google.com/thumbnail?id=1Km6fThhUlbHCzCy02m_sH6G790Vb9o6a&sz=w1200",
 "https://drive.google.com/thumbnail?id=1q_EuTRtaq5PLPI73y8YXiyILn_hZynsd&sz=w1200",
 "https://drive.google.com/thumbnail?id=1fQeNkqUHZNa5w2ESK-6Ei5yJyTbY2isB&sz=w1200",
+
+]
+},
+{
+name:"CAMISA FLAMENGO 26/25 FAMININA",
+price:"R$120",
+oldPrice:"R$150",
+promotion:true,
+category:"brasil",
+ready:false,
+sizes:["P","M","G"],
+desc:"Descrição",
+
+images:[
+
+"https://drive.google.com/thumbnail?id=1NqJJMUVpnLbrHVyQ6LYFDGm98AgIJ7XQ&sz=w1200",
+"https://drive.google.com/thumbnail?id=1fA2fy5cBWOSPhzZZMmknLwo7Gd0PLP2c&sz=w1200",
+"https://drive.google.com/thumbnail?id=1EfQd9L0Nr_xk_dgUo_NabJ8yKZXn7GVr&sz=w1200",
+"https://drive.google.com/thumbnail?id=1oTRvP2mzohGcuB2KCu1tnAj6kIQN7mOV&sz=w1200",
+"https://drive.google.com/thumbnail?id=1r35YYKwfz3GWGl6weA2S9heh9_dJvP3j&sz=w1200",
+"https://drive.google.com/thumbnail?id=1OB3U17MT6eNmh3NXJ32_3TZsNHOqciIs&sz=w1200",
+"https://drive.google.com/thumbnail?id=1gpzMrTLbJVaaKndxHc_VZj-zqQkO7e9j&sz=w1200",
 
 ]
 },
