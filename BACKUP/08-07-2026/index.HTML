@@ -11,136 +11,8 @@
 
 <link rel="stylesheet" href="\FRONT\style.css">
 
-<style>
 
-/* ===== POPUP DE DESCONTO (CADASTRO) ===== */
 
-.discount-popup-overlay{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.75);
-backdrop-filter:blur(4px);
-display:flex;
-align-items:center;
-justify-content:center;
-z-index:99999;
-opacity:0;
-pointer-events:none;
-transition:opacity .35s ease;
-}
-
-.discount-popup-overlay.show{
-opacity:1;
-pointer-events:auto;
-}
-
-.discount-popup-card{
-position:relative;
-background:linear-gradient(160deg,#161616 0%,#000 100%);
-border:1px solid rgba(255,215,0,0.35);
-border-radius:18px;
-padding:34px 28px 28px;
-width:90%;
-max-width:340px;
-text-align:center;
-box-shadow:0 0 40px rgba(255,215,0,0.15);
-transform:translateY(30px) scale(.96);
-transition:transform .35s ease;
-}
-
-.discount-popup-overlay.show .discount-popup-card{
-transform:translateY(0) scale(1);
-}
-
-.discount-popup-close{
-position:absolute;
-top:10px;
-right:14px;
-background:none;
-border:none;
-color:#888;
-font-size:18px;
-cursor:pointer;
-}
-
-.discount-popup-close:hover{
-color:gold;
-}
-
-.discount-popup-icon{
-font-size:38px;
-margin-bottom:8px;
-}
-
-.discount-popup-card h2{
-color:gold;
-font-size:20px;
-margin:6px 0 6px;
-}
-
-.discount-popup-card p{
-color:#e6e6e6;
-font-size:14px;
-margin-bottom:16px;
-line-height:1.4;
-}
-
-#discountPhone{
-width:100%;
-padding:12px;
-border-radius:10px;
-border:1px solid #333;
-background:#0e0e0e;
-color:#fff;
-font-size:15px;
-margin-bottom:12px;
-box-sizing:border-box;
-text-align:center;
-}
-
-#discountPhone:focus{
-outline:none;
-border-color:gold;
-}
-
-.discount-popup-btn{
-width:100%;
-background:linear-gradient(90deg,gold,#ffcf40);
-border:none;
-color:#111;
-font-weight:700;
-padding:12px;
-border-radius:24px;
-cursor:pointer;
-font-size:14px;
-letter-spacing:.5px;
-transition:transform .15s ease;
-}
-
-.discount-popup-btn:hover{
-transform:scale(1.03);
-}
-
-.discount-popup-link{
-display:block;
-width:100%;
-background:none;
-border:none;
-color:#999;
-font-size:13px;
-margin-top:12px;
-cursor:pointer;
-text-decoration:underline;
-}
-
-.discount-popup-link:hover{
-color:gold;
-}
-
-</style>
 
 </head>
 
@@ -230,38 +102,52 @@ placeholder="Buscar camisa, seleção, retrô..."
 
 </div>
 
-<!-- POPUP DE DESCONTO (CADASTRO) -->
+<!-- LOGIN -->
 
-<div id="discountPopup" class="discount-popup-overlay">
+<div id="loginScreen" style="
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#0e0e0e;
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:9999;
+">
 
-<div class="discount-popup-card">
+<div style="text-align:center">
 
-<button class="discount-popup-close" onclick="closeDiscountPopup()">✕</button>
-
-<div id="discountPopupContent">
-
-<div class="discount-popup-icon">🎁</div>
-
-<h2>Cadastre seu número</h2>
-
-<p>e ganhe <strong>R$10 OFF</strong> no seu pedido!</p>
+<h2 style="color:gold;margin-bottom:20px">
+Digite seu número para entrar
+</h2>
 
 <input
-id="discountPhone"
-placeholder="Seu WhatsApp com DDD"
+id="phoneLogin"
+placeholder="Seu número"
 type="tel"
 inputmode="numeric"
->
+style="
+padding:12px;
+width:220px;
+border-radius:8px;
+border:none;
+margin-bottom:15px;
+font-size:16px;
+">
 
-<button class="discount-popup-btn" onclick="registerDiscountPhone()">
-Quero meu desconto
+<br>
+
+<button onclick="login()" style="
+background:gold;
+border:none;
+padding:10px 30px;
+border-radius:20px;
+cursor:pointer;
+">
+Entrar
 </button>
-
-<button class="discount-popup-link" onclick="dismissDiscountPopup()">
-Já tenho cadastro
-</button>
-
-</div>
 
 </div>
 
@@ -389,167 +275,42 @@ videos:[]
 }
 
 
+window.onload=function(){
+
+let phoneSalvo = localStorage.getItem("clienteTelefone")
+
+if(phoneSalvo){
+
+document.getElementById("loginScreen").style.display = "none"
+
+}
+
+}
+
+
 let devMode=false
 
-/* =========================
-   POPUP DE DESCONTO (CADASTRO)
-========================= */
+function login(){
 
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyw8Hk_qrdxduVBkY_5syDnM_x7085dIvR4gkLP3TRfLwbwYpgQYn-xhunbKavGobIj/exec"
+let phone=document.getElementById("phoneLogin").value
 
-let discountPopupShown = false
-
-function abrirPopupDesconto(){
-
-/* NÃO MOSTRAR SE JÁ CADASTRADO OU JÁ FECHOU */
-
-if(discountPopupShown) return
-if(localStorage.getItem("clienteTelefone")) return
-if(sessionStorage.getItem("popupDescontoFechado")) return
-
-discountPopupShown = true
-
-document.getElementById("discountPopup").classList.add("show")
-
-}
-
-/* GATILHO: METADE DA PÁGINA */
-
-window.addEventListener("scroll",()=>{
-
-let alturaTotal = document.body.scrollHeight - window.innerHeight
-
-if(alturaTotal <= 0) return
-
-let percentualRolado = (window.scrollY / alturaTotal) * 100
-
-if(percentualRolado >= 50){
-
-abrirPopupDesconto()
-
-}
-
-})
-
-/* GATILHO: TEMPO NA PÁGINA */
-
-setTimeout(abrirPopupDesconto, 9000)
-
-function closeDiscountPopup(){
-
-document.getElementById("discountPopup").classList.remove("show")
-
-sessionStorage.setItem("popupDescontoFechado","true")
-
-}
-
-function dismissDiscountPopup(){
-
-/* CLIENTE DIZ QUE JÁ TEM CADASTRO */
-
-localStorage.setItem("clienteTelefone","ja_cadastrado")
-
-closeDiscountPopup()
-
-}
-
-async function registerDiscountPhone(){
-
-let phone = document
-.getElementById("discountPhone")
-.value
-.replace(/\D/g,"")
-
-if(phone.length < 10){
-
-alert("Digite um número válido com DDD")
+if(phone=="38999624223"){
+alert("Digite seu número")
 return
-
 }
 
-let content = document.getElementById("discountPopupContent")
+/* SALVAR NA PLANILHA */
 
-content.innerHTML = `
-
-<div class="discount-popup-icon">⏳</div>
-
-<h2>Verificando cadastro...</h2>
-
-`
-
-let jaCadastrado = false
-
-try{
-
-/* SALVAR/VERIFICAR NA PLANILHA */
-
-let response = await fetch(GOOGLE_SCRIPT_URL,{
-
+fetch("https://script.google.com/macros/s/AKfycbyw8Hk_qrdxduVBkY_5syDnM_x7085dIvR4gkLP3TRfLwbwYpgQYn-xhunbKavGobIj/exec",{
 method:"POST",
-
 body:new URLSearchParams({
 phone:phone
 })
-
 })
-
-try{
-
-let data = await response.json()
-
-if(data && (data.exists === true || data.status === "exists")){
-
-jaCadastrado = true
-
-}
-
-}catch(e){
-
-/* RESPOSTA NÃO É JSON, SEGUE COMO NOVO CADASTRO */
-
-}
-
-}catch(err){
-
-console.error(err)
-
-}
 
 localStorage.setItem("clienteTelefone", phone)
 
-if(jaCadastrado){
-
-content.innerHTML = `
-
-<div class="discount-popup-icon">✅</div>
-
-<h2>Você já possui cadastro</h2>
-
-<p>Obrigado, jogador(a)!</p>
-
-`
-
-}else{
-
-localStorage.setItem("descontoCadastro","10")
-
-content.innerHTML = `
-
-<div class="discount-popup-icon">🎉</div>
-
-<h2>Cadastro realizado!</h2>
-
-<p>Você ganhou <strong>R$10 OFF</strong> no seu pedido.</p>
-
-`
-
-}
-
-setTimeout(()=>{
-
-document.getElementById("discountPopup").classList.remove("show")
-
-},2600)
+document.getElementById("loginScreen").style.display="none"
 
 }
 
@@ -984,6 +745,9 @@ document.getElementById("addProductModal").style.display="none"
 
 let cart=[]
 
+let selectedShipping = 0
+let selectedShippingName = ""
+
 let currentProduct=null 
 
 
@@ -1072,7 +836,7 @@ R$${item.price}
 
 })
 
-/* DESCONTO POR QUANTIDADE */
+/* DESCONTO */
 
 let discount = 0
 
@@ -1082,25 +846,21 @@ discount = subtotal * 0.10
 
 }
 
-/* DESCONTO DE CADASTRO (R$10) */
+/* FRETE */
 
-let descontoCadastro = 0
+let shipping = selectedShipping || 0
 
-if(cart.length > 0 && localStorage.getItem("descontoCadastro")){
+/* FRETE GRATIS */
 
-descontoCadastro = 10
+if(totalQty >= 5){
+
+shipping = 0
 
 }
 
 /* TOTAL */
 
-let total = subtotal - discount - descontoCadastro
-
-if(total < 0){
-
-total = 0
-
-}
+let total = subtotal - discount + shipping
 
 /* MENSAGEM PROMO */
 
@@ -1120,6 +880,18 @@ promoMessage = "🎉 Você ganhou 10% OFF no pedido"
 
 }
 
+if(totalQty >= 4 && totalQty < 5){
+
+promoMessage = "🚚 Adicione mais 1 camisa para FRETE GRÁTIS"
+
+}
+
+if(totalQty >= 5){
+
+promoMessage = "🔥 FRETE GRÁTIS LIBERADO"
+
+}
+
 /* ATUALIZAR HTML */
 
 document.getElementById("cartPromoMessage")
@@ -1131,20 +903,10 @@ document.getElementById("cartSubtotal")
 document.getElementById("cartDiscount")
 .innerText = `R$${discount.toFixed(2)}`
 
-let linhaCadastro = document.getElementById("cartDiscountCadastroLine")
-
-if(descontoCadastro > 0){
-
-linhaCadastro.style.display = "flex"
-
-document.getElementById("cartDiscountCadastro")
-.innerText = `R$${descontoCadastro.toFixed(2)}`
-
-}else{
-
-linhaCadastro.style.display = "none"
-
-}
+document.getElementById("cartShipping")
+.innerText = shipping === 0
+? "GRÁTIS"
+: `R$${shipping.toFixed(2)}`
 
 document.getElementById("cartTotal")
 .innerText = `R$${total.toFixed(2)}`
@@ -1165,6 +927,184 @@ cart.splice(index,1)
 }
 
 renderCart()
+
+}
+
+
+async function calculateShipping(){
+
+let cep = document
+.getElementById("cep")
+.value
+.replace(/\D/g,'')
+
+if(cep.length !== 8){
+
+alert("Digite um CEP válido")
+return
+
+}
+
+if(cart.length === 0){
+
+alert("Adicione produtos no carrinho")
+return
+
+}
+
+/* RESETAR FRETE ANTERIOR */
+
+selectedShipping = 0
+selectedShippingName = ""
+
+document.getElementById("shippingOptions").innerHTML = `
+<div class="shipping-loading">
+Calculando frete...
+</div>
+`
+
+let totalWeight = cart.reduce((acc,item)=>{
+   return acc + (item.qty * 0.25)
+},0)
+
+try{
+
+let response = await fetch(
+"https://backend-frete.onrender.com/calcular-frete",
+{
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+cepDestino:cep,
+produtos:cart,
+peso:totalWeight
+
+})
+
+}
+)
+
+let data = await response.json()
+
+renderShippingOptions(data)
+
+}catch(err){
+
+console.log(err)
+
+document.getElementById("shippingOptions").innerHTML = `
+<div class="shipping-error">
+Erro ao calcular frete
+</div>
+`
+
+}
+
+}
+
+function renderShippingOptions(options){
+
+let box = document
+.getElementById("shippingOptions")
+
+box.innerHTML = ""
+
+options.forEach((option,index)=>{
+
+box.innerHTML += `
+
+<div
+class="shipping-option"
+onclick="selectShipping(
+'${option.name}',
+${option.price}
+,this
+)"
+>
+
+<div>${option.name}</div>
+
+<div class="shipping-price">
+R$ ${option.price}
+</div>
+
+<div>
+Prazo: ${option.delivery_time} dias
+</div>
+
+</div>
+
+`
+
+})
+
+}
+
+function selectShipping(name,price,element){
+
+document
+.querySelectorAll(".shipping-option")
+.forEach(el=>el.classList.remove("active"))
+
+element.classList.add("active")
+
+selectedShipping = Number(price)
+
+selectedShippingName = name
+
+/* ESCONDER OPÇÕES */
+
+const optionsBox =
+document.getElementById("shippingOptions")
+
+optionsBox.classList.add("shipping-collapsed")
+
+/* MOSTRAR RESUMO */
+
+document.getElementById("shippingSelected")
+.innerHTML = `
+
+<div class="selected-shipping-info">
+
+<div>
+
+<div class="selected-title">
+${name}
+</div>
+
+<div class="selected-price">
+R$ ${Number(price).toFixed(2)}
+</div>
+
+</div>
+
+<button class="change-shipping-btn"
+onclick="toggleShippingOptions()">
+
+▼
+
+</button>
+
+</div>
+
+`
+
+renderCart()
+
+}
+
+
+function toggleShippingOptions(){
+
+const options =
+document.getElementById("shippingOptions")
+
+options.classList.toggle("shipping-collapsed")
 
 }
 
@@ -1197,37 +1137,23 @@ msg += `Valor: R$${item.price}%0A%0A`
 
 let discount=0
 
-if(totalQty>=4){
+if(totalQty>=2){
 
 discount=subtotal*0.10
 
 }
 
-let descontoCadastro = 0
+let shipping = selectedShipping || 0
 
-if(localStorage.getItem("descontoCadastro")){
-
-descontoCadastro = 10
-
-}
-
-let total = subtotal - discount - descontoCadastro
-
-if(total < 0){
-
-total = 0
-
-}
+let total=subtotal-discount+shipping
 
 msg += `--------------------%0A`
 msg += `Subtotal: R$${subtotal.toFixed(2)}%0A`
 msg += `Desconto: R$${discount.toFixed(2)}%0A`
 
-if(descontoCadastro > 0){
-
-msg += `Desconto Cadastro: R$${descontoCadastro.toFixed(2)}%0A`
-
-}
+msg += shipping===0
+? `Frete: GRÁTIS%0A`
+: `Frete (${selectedShippingName}): R$${shipping}%0A`
 
 msg += `TOTAL: R$${total.toFixed(2)}`
 
@@ -1299,9 +1225,9 @@ document.querySelector(".sidebar").classList.add("closed")
 <span id="cartDiscount">R$0</span>
 </div>
 
-<div class="summary-line" id="cartDiscountCadastroLine" style="display:none">
-<span>Desconto Cadastro 🎁</span>
-<span id="cartDiscountCadastro">R$0</span>
+<div class="summary-line">
+<span>Frete</span>
+<span id="cartShipping">R$0</span>
 </div>
 
 <div class="summary-total">
@@ -1309,8 +1235,33 @@ document.querySelector(".sidebar").classList.add("closed")
 <span id="cartTotal">R$0</span>
 </div>
 
+<!-- FRETE -->
+
+<div class="shipping-box">
+
+<h3>Calcular Frete</h3>
+
+<div class="shipping-input">
+
+<input
+type="text"
+id="cep"
+placeholder="Digite seu CEP"
+maxlength="9"
+>
+
+<button onclick="calculateShipping()">
+OK
+</button>
+
+</div>
+
+<div id="shippingOptions" class="shipping-result"></div>
+<div id="shippingSelected"></div>
+</div>
+
 <button class="finish-btn" onclick="finishOrder()">
-🟢 FINALIZAR NO WHATSAPP
+FINALIZAR PEDIDO
 </button>
 
 </div>

@@ -79,10 +79,13 @@ desc:"Descrição",
 
 images:[
 
-"https://drive.google.com/thumbnail?id=1cIds0nM2MQVzBXHkJhi-l5dBLWJlcDf-&sz=w1200",
-"https://drive.google.com/thumbnail?id=1AdlFYt7aX6UnIhS-8hmJrKwS3WFRAJuL&sz=w1200",
-"https://drive.google.com/thumbnail?id=1Xv-BCjbrDKYwUgAEtVxG2OIQx5Av5-tJ&sz=w1200",
-"https://drive.google.com/thumbnail?id=1PCoUGpeOy9aHDBuX_xC2x9phnHNXEraX&sz=w1200",
+"https://drive.google.com/thumbnail?id=1i-GAuapi_nHZGgow8YU8UQadnd7UP_En&sz=w1200",
+"https://drive.google.com/thumbnail?id=1sWJCNxy0UfmJXM78sQtNVI2Y-7V30Rgc&sz=w1200",
+"https://drive.google.com/thumbnail?id=1OdhX3EW_dBD29HbSRLzO-wYIV76yCDxz&sz=w1200",
+"https://drive.google.com/thumbnail?id=1w1Y9trYjIDAiG1qkPentE46PV1zRCORf&sz=w1200",
+"https://drive.google.com/thumbnail?id=1Njm7MqSAkDTsJjjtndV37UgDUJdjhnNh&sz=w1200",
+"https://drive.google.com/thumbnail?id=1fcjk-EVx7XfFpSoQMqasbsDaN4VZX8UE&sz=w1200",
+"https://drive.google.com/thumbnail?id=1icnxNjCaYLSNf7j8Jbelqy6ep2ulYVlr&sz=w1200",
 
 ],
 video:"https://drive.google.com/file/d/1wSGtwXQ_0gyBG9HtaxS2XaNJIB_iSkRI/preview"
@@ -139,8 +142,8 @@ images:[
 },
 {
 name:"BRASIL 2026/27",
-price:"R$150",
-oldPrice:"R$170",
+price:"R$110",
+oldPrice:"R$150",
 promotion:true,
 category:["brasil","selecoes"],
 ready:false,
@@ -163,8 +166,8 @@ video:"https://drive.google.com/file/d/1qUWkLGxjTfVVLU6t_DwKx1pFswHRzDHC/preview
 },
 {
 name:"BRASIL 2° 2026/27",
-price:"R$150",
-oldPrice:"R$170",
+price:"R$110",
+oldPrice:"R$150",
 promotion:true,
 category:["brasil","selecoes"],
 ready:false,
@@ -188,8 +191,8 @@ images:[
 },
 {
 name:"BRASIL FEMININO 2026/27",
-price:"R$150",
-oldPrice:"R$170",
+price:"R$110",
+oldPrice:"R$150",
 promotion:true,
 category:["brasil","selecoes"],
 ready:false,
@@ -323,8 +326,8 @@ images:[
 },
 {
 name:"PALMEIRAS",
-price:"R$150",
-oldPrice:"R$170",
+price:"R$120",
+oldPrice:"R$150",
 promotion:true,
 category:"brasil",
 ready:false,
@@ -411,6 +414,70 @@ images:[
 "https://drive.google.com/thumbnail?id=1z_Mimp1V0Amr_7sLVVEbxaV6LC6VRuPP&sz=w1200",
 "https://drive.google.com/thumbnail?id=15mc2nrEjcdvsV_7g7Qk_2eOEM4TQupRK&sz=w1200",
 "https://drive.google.com/thumbnail?id=1DM58F5WcFKC2uhZQR_FYIv0Bn4BADtpY&sz=w1200",
+
+]
+},
+{
+name:"CRUZEIRO 2023",
+price:"R$120",
+oldPrice:"R$150",
+promotion:true,
+category:"brasil",
+ready:false,
+sizes:["G"],
+desc:"Descrição",
+
+images:[
+
+"https://drive.google.com/thumbnail?id=1jsKHp9K75nixueKLeZlqF-pmD61-KPTS&sz=w1200",
+"https://drive.google.com/thumbnail?id=1HRTJbOB53dLzfJaxxxeTowNJW8gBKOP5&sz=w1200",
+"https://drive.google.com/thumbnail?id=1JSb5s3zXV27ko38OoH-EWftaFRSPa1LG&sz=w1200",
+"https://drive.google.com/thumbnail?id=1fX_-IlEF-_XmhpudKlMXQBWsBLgH7SMW&sz=w1200",
+"https://drive.google.com/thumbnail?id=1kl9ZRqvxfqNxnq8aUYwPcAYQ_HKztRdw&sz=w1200",
+"https://drive.google.com/thumbnail?id=1Wq_s9NLYwQmHWBAamkxIlnrUMEu2g5Dj&sz=w1200",
+
+]
+},
+{
+name:"BRASIL 2° FEMININA",
+price:"110",
+oldPrice:"150",
+promotion:true,
+category:"brasil",
+ready:false,
+sizes:["P"],
+desc:"Descrição",
+
+images:[
+
+"https://drive.google.com/thumbnail?id=1vaH8sgM2QbWbqE46gftQ7I9e3Eh70e7_&sz=w1200",
+"https://drive.google.com/thumbnail?id=1vd9WGZuuV3ExXBGpW1Sa1JM7ry77pCv9&sz=w1200",
+"https://drive.google.com/thumbnail?id=1vd9WGZuuV3ExXBGpW1Sa1JM7ry77pCv9&sz=w1200",
+"https://drive.google.com/thumbnail?id=1Km6fThhUlbHCzCy02m_sH6G790Vb9o6a&sz=w1200",
+"https://drive.google.com/thumbnail?id=1q_EuTRtaq5PLPI73y8YXiyILn_hZynsd&sz=w1200",
+"https://drive.google.com/thumbnail?id=1fQeNkqUHZNa5w2ESK-6Ei5yJyTbY2isB&sz=w1200",
+
+]
+},
+{
+name:"CAMISA FLAMENGO 26/25 FAMININA",
+price:"R$120",
+oldPrice:"R$150",
+promotion:true,
+category:"brasil",
+ready:false,
+sizes:["P","M","G"],
+desc:"Descrição",
+
+images:[
+
+"https://drive.google.com/thumbnail?id=1NqJJMUVpnLbrHVyQ6LYFDGm98AgIJ7XQ&sz=w1200",
+"https://drive.google.com/thumbnail?id=1fA2fy5cBWOSPhzZZMmknLwo7Gd0PLP2c&sz=w1200",
+"https://drive.google.com/thumbnail?id=1EfQd9L0Nr_xk_dgUo_NabJ8yKZXn7GVr&sz=w1200",
+"https://drive.google.com/thumbnail?id=1oTRvP2mzohGcuB2KCu1tnAj6kIQN7mOV&sz=w1200",
+"https://drive.google.com/thumbnail?id=1r35YYKwfz3GWGl6weA2S9heh9_dJvP3j&sz=w1200",
+"https://drive.google.com/thumbnail?id=1OB3U17MT6eNmh3NXJ32_3TZsNHOqciIs&sz=w1200",
+"https://drive.google.com/thumbnail?id=1gpzMrTLbJVaaKndxHc_VZj-zqQkO7e9j&sz=w1200",
 
 ]
 },
