@@ -28,7 +28,7 @@ price:"R$120",
 oldPrice:"R$150",
 promotion:true,
 category:"brasil",
-ready:false,
+ready:true,
 sizes:["P"],
 desc:"Descrição",
 
@@ -73,7 +73,7 @@ price:"R$120",
 oldPrice:"R$150",
 promotion:true,
 category:"brasil",
-ready:false,
+ready:true,
 sizes:["P"],
 desc:"Descrição",
 
@@ -146,8 +146,8 @@ price:"R$110",
 oldPrice:"R$150",
 promotion:true,
 category:["brasil","selecoes"],
-ready:false,
-sizes:["P"],
+ready:true,
+sizes:["M"],
 desc:"Descrição",
 
 images:[
@@ -478,6 +478,27 @@ images:[
 "https://drive.google.com/thumbnail?id=1r35YYKwfz3GWGl6weA2S9heh9_dJvP3j&sz=w1200",
 "https://drive.google.com/thumbnail?id=1OB3U17MT6eNmh3NXJ32_3TZsNHOqciIs&sz=w1200",
 "https://drive.google.com/thumbnail?id=1gpzMrTLbJVaaKndxHc_VZj-zqQkO7e9j&sz=w1200",
+
+]
+},
+{
+name:"PORTUGAL 2026",
+price:"R$150",
+oldPrice:"R$120",
+promotion:true,
+category:"selecao",
+ready:false,
+sizes:["P","M","G","GG"],
+desc:"Descrição",
+
+images:[
+
+"https://drive.google.com/thumbnail?id=19tlD2E9dPwnhDXvDbht-XForCpeC5p0F&sz=w1200",
+"https://drive.google.com/thumbnail?id=1UXq4MLeZB9rqwdJj6ERo8X1NZAH8pghV&sz=w1200",
+"https://drive.google.com/thumbnail?id=19bdmk24x_YkBoRG5-hLUZH5EFliHzWWm&sz=w1200",
+"https://drive.google.com/thumbnail?id=1lHvTqSVr1bT0uve8uJPgW6vqMe_8V2tU&sz=w1200",
+"https://drive.google.com/thumbnail?id=1z-Lw6YurEXfbuQmUueHogWhz9Pl4zuV0&sz=w1200",
+"https://drive.google.com/thumbnail?id=1cqP_vAiWG0qIqv5IKU7vjXAC0zwHNKmt&sz=w1200",
 
 ]
 },
