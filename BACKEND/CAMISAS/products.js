@@ -504,8 +504,8 @@ images:[
 },
 {
 name:"ESPANHA 2° 26",
-price:"R$120",
-oldPrice:"R$150",
+price:"R$150",
+oldPrice:"R$180",
 promotion:true,
 category:"selecao",
 ready:false,
@@ -569,7 +569,7 @@ images:[
 ]
 },
 {
-name:"CRUZEIRO 26 ESPECIAL EDITION COPA,M",
+name:"CRUZEIRO 26 ESPECIAL EDITION COPA",
 price:"R$120",
 oldPrice:"R$150",
 promotion:true,

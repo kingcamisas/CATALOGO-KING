@@ -28,7 +28,7 @@ price:"R$120",
 oldPrice:"R$150",
 promotion:true,
 category:"brasil",
-ready:true,
+ready:false,
 sizes:["P"],
 desc:"Descrição",
 
@@ -73,7 +73,7 @@ price:"R$120",
 oldPrice:"R$150",
 promotion:true,
 category:"brasil",
-ready:true,
+ready:false,
 sizes:["P"],
 desc:"Descrição",
 
@@ -146,7 +146,7 @@ price:"R$110",
 oldPrice:"R$150",
 promotion:true,
 category:["brasil","selecoes"],
-ready:true,
+ready:false,
 sizes:["M"],
 desc:"Descrição",
 
@@ -499,6 +499,93 @@ images:[
 "https://drive.google.com/thumbnail?id=1lHvTqSVr1bT0uve8uJPgW6vqMe_8V2tU&sz=w1200",
 "https://drive.google.com/thumbnail?id=1z-Lw6YurEXfbuQmUueHogWhz9Pl4zuV0&sz=w1200",
 "https://drive.google.com/thumbnail?id=1cqP_vAiWG0qIqv5IKU7vjXAC0zwHNKmt&sz=w1200",
+
+]
+},
+{
+name:"ESPANHA 2° 26",
+price:"R$120",
+oldPrice:"R$150",
+promotion:true,
+category:"selecao",
+ready:false,
+sizes:["P","M","G","GG"],
+desc:"Descrição",
+
+images:[
+
+"https://drive.google.com/thumbnail?id=1S0X9pEbY1h7jKvjgVMh8GK8XMqyePeI7&sz=w1200",
+"https://drive.google.com/thumbnail?id=1zsU6eIpRvefmGtMtGt4btfsK_r3DdMuq&sz=w1200",
+"https://drive.google.com/thumbnail?id=1BK9r9aFIcmR_-eoGhAbiWQsZnnXcAU24&sz=w1200",
+"https://drive.google.com/thumbnail?id=19khUXbkep9-XBhdBS1Mq0qNuiHMkR18i&sz=w1200",
+"https://drive.google.com/thumbnail?id=11FP90g4-vOeet7WtWkMaGFUh0jBcN6P3&sz=w1200",
+"https://drive.google.com/thumbnail?id=1wo3N5X0gmAcpwcx702SZzcLWfftOqPEZ&sz=w1200",
+"https://drive.google.com/thumbnail?id=17r9oVzFE8QTYzGXuBENlqq4vQkRsZMmj&sz=w1200",
+"https://drive.google.com/thumbnail?id=1ppLuooOtSHJDWxXeF9phVoiymMBgqFek&sz=w1200",
+
+]
+},
+{
+name:"REAL MADRID 16/17",
+price:"R$150",
+oldPrice:"R$180",
+promotion:true,
+category:"europa",
+ready:false,
+sizes:["P","M","G","GG"],
+desc:"Descrição",
+
+images:[
+
+"https://drive.google.com/thumbnail?id=1eSY8WSBXWbuvkSvl4y5ecme0hOeNdohm&sz=w1200",
+"https://drive.google.com/thumbnail?id=1RryZj6RaH0Rnqu-tKL1Y-ILdsGW9xV_I&sz=w1200",
+"https://drive.google.com/thumbnail?id=1oDp2QliO7jxbHgMMz4y87XqGETvjGvMT&sz=w1200",
+"https://drive.google.com/thumbnail?id=1IxAMy-TB9k96Oihz8nqlFV3lORBvL1j8&sz=w1200",
+"https://drive.google.com/thumbnail?id=14VIaIYGOXX722ASV7v8Ut200H1cueCnN&sz=w1200",
+"https://drive.google.com/thumbnail?id=1X6J27VQ32ABHCA05du6y-iUhT3Fn_mP9&sz=w1200",
+
+]
+},
+{
+name:"CREZEIRO 26  ESPECIAL EDITION BRANCA ",
+price:"R$120",
+oldPrice:"R$150",
+promotion:true,
+category:"brasil",
+ready:false,
+sizes:["P","M","G","GG"],
+desc:"Descrição",
+
+images:[
+
+"https://drive.google.com/thumbnail?id=1TjVHaZN2ie8zeFAP7RHKF3EM9uBKNahy&sz=w1200",
+"https://drive.google.com/thumbnail?id=1KmohgBLiP96p2cIhMgTEEOaXxC98rLc_&sz=w1200",
+"https://drive.google.com/thumbnail?id=1T_c4IQyZX__BxInJjc8VaM7JhEj0YPgV&sz=w1200",
+"https://drive.google.com/thumbnail?id=1xNFu8b-MFdBtMYomYlgyiCbeW-kAmBRT&sz=w1200",
+"https://drive.google.com/thumbnail?id=1H_rgvw_KB8IYA471123go_HWS2UcUCJG&sz=w1200",
+"https://drive.google.com/thumbnail?id=1pO67eUiO6llzJIeOzD0U0_m2VThs7pL4&sz=w1200",
+"https://drive.google.com/thumbnail?id=1dbtvjjxPkvc4chhGdPnJZb-Xd3-iP6Z_&sz=w1200",
+
+]
+},
+{
+name:"CRUZEIRO 26 ESPECIAL EDITION COPA,M",
+price:"R$120",
+oldPrice:"R$150",
+promotion:true,
+category:"brasil",
+ready:false,
+sizes:["P","M","G","GG"],
+desc:"Descrição",
+
+images:[
+
+"https://drive.google.com/thumbnail?id=1i3Eypc2Aj2t_bk9FeTbum4V46zM36sNv&sz=w1200",
+"https://drive.google.com/thumbnail?id=1PR-TinVE1piy_eovl4a0upsCX4TmXM9A&sz=w1200",
+"https://drive.google.com/thumbnail?id=1QDC6wjemV2JHJzUmFXqvX4-s6d6sKabI&sz=w1200",
+"https://drive.google.com/thumbnail?id=1_06LQPAMFd65mpJ1aac8MHLhG6D4BU43&sz=w1200",
+"https://drive.google.com/thumbnail?id=1BmO4sYxe_g17Nn79iUn6qvgrYNtlksml&sz=w1200",
+"https://drive.google.com/thumbnail?id=1D-4neYk6aD3C1WaWpPzdOkGFJmxO8qMI&sz=w1200",
 
 ]
 },
