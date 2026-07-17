@@ -24,7 +24,7 @@ images:[
 },
 {
 name:"Flamengo 26 - Home - Jogador",
-price:"R$130",
+price:"R$140",
 oldPrice:"R$150",
 promotion:true,
 category:"brasil",
