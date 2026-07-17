@@ -2,7 +2,7 @@
 
 const products=[
 {
-name:"ATLETICO MG 2026",
+name:"Atletico MG 26 - Home",
 price:"R$120",
 oldPrice:"R$150",
 promotion:true,
@@ -23,8 +23,8 @@ images:[
 ]
 },
 {
-name:"FLAMENGO 2026",
-price:"R$120",
+name:"Flamengo 26 - Home - Jogador",
+price:"R$130",
 oldPrice:"R$150",
 promotion:true,
 category:"brasil",
@@ -301,7 +301,7 @@ images:[
 ]
 },
 {
-name:"PALMEIRAS 2026",
+name:"Palmeiras 25 - Home",
 price:"R$120",
 oldPrice:"R$150",
 promotion:true,
@@ -325,7 +325,7 @@ images:[
 ]
 },
 {
-name:"PALMEIRAS",
+name:"Palmeiras 26/27 - Palestra Italia",
 price:"R$120",
 oldPrice:"R$150",
 promotion:true,
@@ -504,8 +504,8 @@ images:[
 },
 {
 name:"ESPANHA 2° 26",
-price:"R$120",
-oldPrice:"R$150",
+price:"R$150",
+oldPrice:"R$180",
 promotion:true,
 category:"selecao",
 ready:false,
@@ -569,7 +569,7 @@ images:[
 ]
 },
 {
-name:"CRUZEIRO 26 ESPECIAL EDITION COPA,M",
+name:"CRUZEIRO 26 ESPECIAL EDITION COPA",
 price:"R$120",
 oldPrice:"R$150",
 promotion:true,
@@ -586,6 +586,138 @@ images:[
 "https://drive.google.com/thumbnail?id=1_06LQPAMFd65mpJ1aac8MHLhG6D4BU43&sz=w1200",
 "https://drive.google.com/thumbnail?id=1BmO4sYxe_g17Nn79iUn6qvgrYNtlksml&sz=w1200",
 "https://drive.google.com/thumbnail?id=1D-4neYk6aD3C1WaWpPzdOkGFJmxO8qMI&sz=w1200",
+
+]
+},
+{
+name:"SANTOS 2026",
+price:"",
+oldPrice:"R$130",
+promotion:false,
+category:"brasil",
+ready:false,
+sizes:["P"],
+desc:"Descrição",
+
+images:[
+
+"https://drive.google.com/thumbnail?id=19sbZMdjOvonP4sr6A5l0edTrCNV3QOx_&sz=w1200",
+"https://drive.google.com/thumbnail?id=158YyKlQZm083QrKV_mIXBwWqEcyHhI66&sz=w1200",
+"https://drive.google.com/thumbnail?id=1yU6r8f6UfxAcPrs0EJ78zgjLJJeAgf0q&sz=w1200",
+"https://drive.google.com/thumbnail?id=1pHGeS8K52t91CGimonEbA0s8sjL3J6CD&sz=w1200",
+"https://drive.google.com/thumbnail?id=1R3eKFREkfxm3l430aDJr_g4vVNbx4SYc&sz=w1200",
+"https://drive.google.com/thumbnail?id=1oH3wdoz1SZldxqq41zYXLPur2lLDPNq-&sz=w1200",
+
+]
+},
+{
+name:"Arsenal 25/26 - Away",
+price:"R$120",
+oldPrice:"R$150",
+promotion:true,
+category:"europa",
+ready:false,
+sizes:["P"],
+desc:"Descrição",
+
+images:[
+
+"https://drive.google.com/thumbnail?id=1pFsEYEYCkoBveyesXsnt2ALx_WlXB9yM&sz=w1200",
+"https://drive.google.com/thumbnail?id=1Lc602y3kyYFpl6I3ysteiHDLensmKki-&sz=w1200",
+"https://drive.google.com/thumbnail?id=1k7pHNyV9IbJWmjHDATP92IEtNcBKKT8u&sz=w1200",
+"https://drive.google.com/thumbnail?id=1ae6prY9RLNfwQUbRgBr0xx0VutJk58N6&sz=w1200",
+"https://drive.google.com/thumbnail?id=1jIGdWakvJO3slaGEFAQ5IM5Y2rf2SZ8p&sz=w1200",
+"https://drive.google.com/thumbnail?id=1z7SGP6TnDnyJ1t8rrO7yRhBzaOJTjBE9&sz=w1200",
+"https://drive.google.com/thumbnail?id=1imAuCvJ_VBmTwUOSXMnXPL1F0Hu2hcOx&sz=w1200",
+"https://drive.google.com/thumbnail?id=1SiK7pxgKCZMN6_pgnThoyX925o0QBV8U&sz=w1200",
+
+]
+},
+{
+name:"Arsenal 25/25 - Home ",
+price:"R$120",
+oldPrice:"R$150",
+promotion:true,
+category:"brasil",
+ready:false,
+sizes:["P"],
+desc:"Descrição",
+
+images:[
+
+"https://drive.google.com/thumbnail?id=1veWbvxyffGayOKrpNo_Cvdg-0FvKjSf1&sz=w1200",
+"https://drive.google.com/thumbnail?id=1wrqAQUv2uDRxU8JqznS0B5pyOtwdC67c&sz=w1200",
+"https://drive.google.com/thumbnail?id=1jVRuH6HMde-lR1HJ-SpR66HOTtyP4rBr&sz=w1200",
+"https://drive.google.com/thumbnail?id=1QvN_04dRZ7tYrDK2HcNosdBvJBnCOB4M&sz=w1200",
+"https://drive.google.com/thumbnail?id=1jYZaawtLj0HhfsZ8UAf5XwSEbzaX2rtN&sz=w1200",
+"https://drive.google.com/thumbnail?id=1_Kaj4GfxQp_Kld6JqtBycgejhXRZiPoL&sz=w1200",
+"https://drive.google.com/thumbnail?id=1ZaHkxTBy8FM3IoRSdPXe8rCBl9sRyfJE&sz=w1200",
+"https://drive.google.com/thumbnail?id=1b-DLsNhPKHwd4_us3rYvyn2_Bq0B3q5E&sz=w1200",
+"https://drive.google.com/thumbnail?id=14c4b2C4hFVRikBcDKCkGIybCAz8bA32P&sz=w1200",
+
+]
+},
+{
+name:"Palmeiras 25/26 - Away - Feminina",
+price:"R$120",
+oldPrice:"R$150",
+promotion:true,
+category:"brasil",
+ready:false,
+sizes:["P"],
+desc:"Descrição",
+
+images:[
+
+"https://drive.google.com/thumbnail?id=1Oal7XtnzG3_HjMRSHr2B3Tk_izSGG0pn&sz=w1200",
+"https://drive.google.com/thumbnail?id=1WNSmtv-7DEVnqwLl9I0hIW__pFqITwQq&sz=w1200",
+"https://drive.google.com/thumbnail?id=1-zX_xGEC77_nMH9r70Of2sdFFheIO1PR&sz=w1200",
+"https://drive.google.com/thumbnail?id=14m20EMij7n309BSb8nFnRvNSbceRLTHo&sz=w1200",
+"https://drive.google.com/thumbnail?id=1Kp4o5tHLJg6HIGVHNtzepB12mnqEmo7-&sz=w1200",
+"https://drive.google.com/thumbnail?id=1ZwJhH-KTss6ohtR4u0zW_j8pioDJ6lKB&sz=w1200",
+"https://drive.google.com/thumbnail?id=1lQmhOdsHXBML2zeo4pgvbcJxgiONxr0-&sz=w1200",
+
+]
+},
+{
+name:"Flamengo 26  - Home ",
+price:"R$120",
+oldPrice:"R$150",
+promotion:true,
+category:"brasil",
+ready:false,
+sizes:["P"],
+desc:"Descrição",
+
+images:[
+
+"https://drive.google.com/thumbnail?id=1nXmVCZqIxfJoAwZucLM5M_VoZMqIwJZA&sz=w1200",
+"https://drive.google.com/thumbnail?id=1XzgPhdQwoQfyC_JMa4v9QY8DDDcdpNaD&sz=w1200",
+"https://drive.google.com/thumbnail?id=1He_LMzHQSqTR0c6f3VhPt35gT7wWTrO4&sz=w1200",
+"https://drive.google.com/thumbnail?id=1IDZibpQPJwETL8K0Ql3pZEiR0r_U28Ee&sz=w1200",
+"https://drive.google.com/thumbnail?id=1zo5ttpCi7nHNCSp4soijeL2q9niLD0tV&sz=w1200",
+"https://drive.google.com/thumbnail?id=1vv13uv-KWcEUswSkeRBBenKQ-PIRwjPF&sz=w1200",
+
+]
+},
+{
+name:"Cruzeiro 26 - Home - Feminina",
+price:"R$120",
+oldPrice:"R$150",
+promotion:true,
+category:"brasil",
+ready:false,
+sizes:["P"],
+desc:"Descrição",
+
+images:[
+
+"https://drive.google.com/thumbnail?id=1tU4fqrMpmUcfHQaedHPsbgxDLUi46Fuo&sz=w1200",
+"https://drive.google.com/thumbnail?id=11VAgGGcqDOoIGTifXkYSKZs4oyeooQ_5&sz=w1200",
+"https://drive.google.com/thumbnail?id=1u7XsWCeAgIWOjowCHz25HtPsTn8Th03J&sz=w1200",
+"https://drive.google.com/thumbnail?id=1DlcO7-02IHTv4vcJToiKRZydWdyri5fY&sz=w1200",
+"https://drive.google.com/thumbnail?id=1IN9uQQTDOIp-v0KetBW4d7-TUNOdvAiQ&sz=w1200",
+"https://drive.google.com/thumbnail?id=1EFb3GSpVGwKpt8WJvtKv-Y-xZK2nE6t0&sz=w1200",
 
 ]
 },
