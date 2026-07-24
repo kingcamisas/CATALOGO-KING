@@ -24,7 +24,7 @@ images:[
 },
 {
 name:"Flamengo 26 - Home - Jogador",
-price:"R$130",
+price:"R$140",
 oldPrice:"R$150",
 promotion:true,
 category:"brasil",
@@ -46,7 +46,7 @@ images:[
 video:"https://drive.google.com/file/d/1hF5Zi_FRcUybv-_mdb4XPyXCQ2N_75kK/preview"
 },
 {
-name:"CRUZEIRO 3° 23/24",
+name:"Cruzeiro 23/24 - Home - Raposão",
 price:"R$120",
 oldPrice:"R$150",
 promotion:true,
@@ -68,7 +68,7 @@ images:[
 ]
 },
 {
-name:"CORINTHIAS 2026",
+name:"Corinthians 26 - Third",
 price:"R$120",
 oldPrice:"R$150",
 promotion:true,
@@ -91,7 +91,7 @@ images:[
 video:"https://drive.google.com/file/d/1wSGtwXQ_0gyBG9HtaxS2XaNJIB_iSkRI/preview"
 },
 {
-name:"CRUZEIRO 2025",
+name:"Cruzeiro 25 - Home",
 price:"R$120",
 oldPrice:"R$150",
 promotion:true,
@@ -116,7 +116,7 @@ images:[
 video:"https://drive.google.com/file/d/1DlC1RtieTEsm0_k3zovuS_h657cySqQn/preview"
 },
 {
-name:"CRUZEIRO 2026",
+name:"Cruzeiro 26 - Home",
 price:"R$120",
 oldPrice:"R$150",
 promotion:true,
@@ -141,7 +141,7 @@ images:[
 ]
 },
 {
-name:"BRASIL 2026/27",
+name:"Brasil 26/27 - Home",
 price:"R$110",
 oldPrice:"R$150",
 promotion:true,
@@ -165,7 +165,7 @@ images:[
 video:"https://drive.google.com/file/d/1qUWkLGxjTfVVLU6t_DwKx1pFswHRzDHC/preview"
 },
 {
-name:"BRASIL 2° 2026/27",
+name:"BRASIL 26/27 - Home",
 price:"R$110",
 oldPrice:"R$150",
 promotion:true,
@@ -190,7 +190,7 @@ images:[
 ]
 },
 {
-name:"BRASIL FEMININO 2026/27",
+name:"BRASIL 26/27 - Feminino",
 price:"R$110",
 oldPrice:"R$150",
 promotion:true,
@@ -214,7 +214,7 @@ images:[
 video:"https://drive.google.com/file/d/1qUWkLGxjTfVVLU6t_DwKx1pFswHRzDHC/preview"
 },
 {
-name:"REAL MADRID 26",
+name:"Real Madrid 26 - Home",
 price:"R$120",
 oldPrice:"R$150",
 promotion:true,
@@ -233,7 +233,7 @@ images:[
 ]
 },
 {
-name:"ITALIA FAN 26",
+name:"Italia 26 - Fan",
 price:"R$120",
 oldPrice:"R$150",
 promotion:true,
@@ -252,7 +252,7 @@ images:[
 ]
 },
 {
-name:"ATLETICO MG 2013",
+name:"Atletico Mg 2013 - Home - Retrô",
 price:"R$120",
 oldPrice:"R$150",
 promotion:true,
@@ -278,7 +278,7 @@ images:[
 ]
 },
 {
-name:"BRASIL 1998",
+name:"Brasil 1998 - Home - Retrô",
 price:"R$150",
 oldPrice:"R$170",
 promotion:true,
@@ -346,7 +346,7 @@ images:[
 ]
 },
 {
-name:"ATLETICO MG ALL BLACK",
+name:"Atletico MG 25 - ALL BLACK",
 price:"R$150",
 oldPrice:"R$170",
 promotion:true,
@@ -372,7 +372,7 @@ images:[
 ]
 },
 {
-name:"MEXICO 2026",
+name:"Mexico 26 - Home",
 price:"R$120",
 oldPrice:"R$150",
 promotion:true,
@@ -395,7 +395,7 @@ images:[
 ]
 },
 {
-name:"ALL NASSR",
+name:"All Nassr 26 - Home",
 price:"R$120",
 oldPrice:"R$150",
 promotion:true,
@@ -418,7 +418,7 @@ images:[
 ]
 },
 {
-name:"CRUZEIRO 2023",
+name:"Cruzeiro 23 - Goleiro",
 price:"R$120",
 oldPrice:"R$150",
 promotion:true,
@@ -439,7 +439,7 @@ images:[
 ]
 },
 {
-name:"BRASIL 2° FEMININA",
+name:"Brasil 26/27 - Away - Feminina",
 price:"110",
 oldPrice:"150",
 promotion:true,
@@ -460,7 +460,7 @@ images:[
 ]
 },
 {
-name:"CAMISA FLAMENGO 26/25 FAMININA",
+name:"Flamengo 25/26 - Away - Feminina",
 price:"R$120",
 oldPrice:"R$150",
 promotion:true,
@@ -482,7 +482,7 @@ images:[
 ]
 },
 {
-name:"PORTUGAL 2026",
+name:"Portugal 26 - Home",
 price:"R$150",
 oldPrice:"R$120",
 promotion:true,
@@ -503,7 +503,7 @@ images:[
 ]
 },
 {
-name:"ESPANHA 2° 26",
+name:"Espanha 26 - Away",
 price:"R$150",
 oldPrice:"R$180",
 promotion:true,
@@ -526,11 +526,11 @@ images:[
 ]
 },
 {
-name:"REAL MADRID 16/17",
+name:"Real Madrid 16/17 - Home - Retrô",
 price:"R$150",
 oldPrice:"R$180",
 promotion:true,
-category:"europa",
+category:"europa,retro",
 ready:false,
 sizes:["P","M","G","GG"],
 desc:"Descrição",
@@ -547,7 +547,7 @@ images:[
 ]
 },
 {
-name:"CREZEIRO 26  ESPECIAL EDITION BRANCA ",
+name:"Cruzeiro 26 - Edição Especial Branca ",
 price:"R$120",
 oldPrice:"R$150",
 promotion:true,
@@ -569,7 +569,7 @@ images:[
 ]
 },
 {
-name:"CRUZEIRO 26 ESPECIAL EDITION COPA",
+name:"Cruzeiro 26 - Edição Especial Copa do Mundo",
 price:"R$120",
 oldPrice:"R$150",
 promotion:true,
@@ -590,7 +590,7 @@ images:[
 ]
 },
 {
-name:"SANTOS 2026",
+name:"Santos 26 - Home",
 price:"",
 oldPrice:"R$130",
 promotion:false,
@@ -718,6 +718,26 @@ images:[
 "https://drive.google.com/thumbnail?id=1DlcO7-02IHTv4vcJToiKRZydWdyri5fY&sz=w1200",
 "https://drive.google.com/thumbnail?id=1IN9uQQTDOIp-v0KetBW4d7-TUNOdvAiQ&sz=w1200",
 "https://drive.google.com/thumbnail?id=1EFb3GSpVGwKpt8WJvtKv-Y-xZK2nE6t0&sz=w1200",
+
+]
+},
+{
+name:"Flamengo  26/27 - Home - Feminina",
+price:"R$120",
+oldPrice:"R$150",
+promotion:true,
+category:"brasil",
+ready:false,
+sizes:["P"],
+desc:"Descrição",
+
+images:[
+
+"https://drive.google.com/thumbnail?id=1GFylxHmxUYQbAajJZVfGm6lWzYihvZdF&sz=w1200",
+"https://drive.google.com/thumbnail?id=1Ylza_IGEsOfnDBSXN20O4_G1z4w2x91y&sz=w1200",
+"https://drive.google.com/thumbnail?id=1FQbzebciCCPsUsTQh8QIlH8el6wxyt8n&sz=w1200",
+"https://drive.google.com/thumbnail?id=1b5ehoUtGRu-oVaOPdkmeQnwRVHKLdros&sz=w1200",
+"https://drive.google.com/thumbnail?id=13puHj6osFCm-6SA4BXCT8fuSczLrNWeW&sz=w1200",
 
 ]
 },
