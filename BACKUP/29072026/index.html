@@ -1,0 +1,1951 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>KINGS CAMISAS</title>
+
+
+
+<link rel="stylesheet" href="\FRONT\style.css">
+
+<style>
+
+/* ===== POPUP DE DESCONTO (CADASTRO) ===== */
+
+.discount-popup-overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.75);
+backdrop-filter:blur(4px);
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:99999;
+opacity:0;
+pointer-events:none;
+transition:opacity .35s ease;
+}
+
+.discount-popup-overlay.show{
+opacity:1;
+pointer-events:auto;
+}
+
+.discount-popup-card{
+position:relative;
+background:linear-gradient(160deg,#161616 0%,#000 100%);
+border:1px solid rgba(255,215,0,0.35);
+border-radius:18px;
+padding:34px 28px 28px;
+width:90%;
+max-width:340px;
+text-align:center;
+box-shadow:0 0 40px rgba(255,215,0,0.15);
+transform:translateY(30px) scale(.96);
+transition:transform .35s ease;
+}
+
+.discount-popup-overlay.show .discount-popup-card{
+transform:translateY(0) scale(1);
+}
+
+.discount-popup-close{
+position:absolute;
+top:10px;
+right:14px;
+background:none;
+border:none;
+color:#888;
+font-size:18px;
+cursor:pointer;
+}
+
+.discount-popup-close:hover{
+color:gold;
+}
+
+.discount-popup-icon{
+font-size:38px;
+margin-bottom:8px;
+}
+
+.discount-popup-card h2{
+color:gold;
+font-size:20px;
+margin:6px 0 6px;
+}
+
+.discount-popup-card p{
+color:#e6e6e6;
+font-size:14px;
+margin-bottom:16px;
+line-height:1.4;
+}
+
+#discountPhone{
+width:100%;
+padding:12px;
+border-radius:10px;
+border:1px solid #333;
+background:#0e0e0e;
+color:#fff;
+font-size:15px;
+margin-bottom:12px;
+box-sizing:border-box;
+text-align:center;
+}
+
+#discountPhone:focus{
+outline:none;
+border-color:gold;
+}
+
+.discount-popup-btn{
+width:100%;
+background:linear-gradient(90deg,gold,#ffcf40);
+border:none;
+color:#111;
+font-weight:700;
+padding:12px;
+border-radius:24px;
+cursor:pointer;
+font-size:14px;
+letter-spacing:.5px;
+transition:transform .15s ease;
+}
+
+.discount-popup-btn:hover{
+transform:scale(1.03);
+}
+
+.discount-popup-link{
+display:block;
+width:100%;
+background:none;
+border:none;
+color:#999;
+font-size:13px;
+margin-top:12px;
+cursor:pointer;
+text-decoration:underline;
+}
+
+.discount-popup-link:hover{
+color:gold;
+}
+
+/* ===== LOGO -> INSTAGRAM ===== */
+
+.logo-top{
+position:relative;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+text-decoration:none;
+transition:transform .2s ease;
+}
+
+.logo-top:hover{
+transform:scale(1.06);
+}
+
+/* ===== BOTÃO FINALIZAR NO WHATSAPP (MODERNO) ===== */
+
+.finish-btn{
+position:relative;
+width:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+background:linear-gradient(135deg,#25D366 0%,#1DA851 100%);
+border:none;
+color:#fff;
+font-weight:700;
+font-size:14.5px;
+letter-spacing:.3px;
+padding:15px 18px;
+border-radius:30px;
+cursor:pointer;
+overflow:hidden;
+box-shadow:0 6px 18px rgba(37,211,102,0.35);
+transition:transform .18s ease, box-shadow .18s ease;
+}
+
+.finish-btn:hover{
+transform:translateY(-2px);
+box-shadow:0 10px 24px rgba(37,211,102,0.5);
+}
+
+.finish-btn:active{
+transform:translateY(0) scale(.98);
+}
+
+.finish-btn .wa-icon{
+width:20px;
+height:20px;
+flex-shrink:0;
+}
+
+.finish-btn .wa-arrow{
+width:16px;
+height:16px;
+flex-shrink:0;
+transition:transform .18s ease;
+}
+
+.finish-btn:hover .wa-arrow{
+transform:translateX(4px);
+}
+
+.finish-btn::after{
+content:"";
+position:absolute;
+top:0;
+left:-60%;
+width:40%;
+height:100%;
+background:linear-gradient(120deg,transparent,rgba(255,255,255,0.35),transparent);
+transform:skewX(-20deg);
+animation:financeShine 3.2s ease-in-out infinite;
+}
+
+@keyframes financeShine{
+0%{left:-60%}
+50%{left:130%}
+100%{left:130%}
+}
+
+/* ===== LINHA DE CUPOM NO CARRINHO ===== */
+
+.cart-coupon-line{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:8px;
+background:rgba(255,215,0,0.08);
+border:1px dashed rgba(255,215,0,0.4);
+border-radius:10px;
+padding:8px 10px;
+margin-top:8px;
+font-size:12.5px;
+color:gold;
+}
+
+.cart-coupon-line strong{
+letter-spacing:1px;
+}
+
+/* ===== FILTRO POR JOGADOR / TIME ===== */
+
+.players-filter{
+padding:34px 20px 6px;
+text-align:center;
+}
+
+.players-filter-title{
+color:gold;
+font-size:19px;
+font-weight:700;
+letter-spacing:1.5px;
+text-transform:uppercase;
+margin-bottom:20px;
+}
+
+.players-row-wrap{
+position:relative;
+max-width:1100px;
+margin:0 auto;
+display:flex;
+align-items:center;
+gap:6px;
+}
+
+.players-row{
+display:flex;
+gap:14px;
+overflow-x:auto;
+scroll-behavior:smooth;
+scrollbar-width:none;
+padding:6px 4px 14px;
+flex:1;
+}
+
+.players-row::-webkit-scrollbar{
+display:none;
+}
+
+.player-item{
+flex:0 0 auto;
+width:calc(25% - 11px);
+cursor:pointer;
+text-align:center;
+user-select:none;
+}
+
+.player-circle{
+width:100%;
+aspect-ratio:1/1;
+border-radius:50%;
+overflow:hidden;
+background:#0e0e0e;
+border:2px solid rgba(255,215,0,0.35);
+box-shadow:0 0 14px rgba(255,215,0,0.1);
+transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+
+.player-circle img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
+}
+
+.player-item span{
+display:block;
+margin-top:8px;
+color:#eaeaea;
+font-size:12px;
+font-weight:600;
+letter-spacing:.3px;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
+}
+
+.player-item:hover .player-circle{
+transform:translateY(-3px) scale(1.06);
+border-color:gold;
+box-shadow:0 0 22px rgba(255,215,0,0.4);
+}
+
+.player-item.active .player-circle{
+border-color:gold;
+box-shadow:0 0 0 3px rgba(255,215,0,.22),0 0 22px rgba(255,215,0,.5);
+}
+
+.player-item.active span{
+color:gold;
+}
+
+.player-item.all-item .player-circle{
+display:flex;
+align-items:center;
+justify-content:center;
+background:linear-gradient(145deg,#1b1b1b,#0a0a0a);
+font-size:11px;
+font-weight:800;
+color:gold;
+letter-spacing:.5px;
+text-transform:uppercase;
+}
+
+.players-arrow{
+background:rgba(0,0,0,0.3);
+border:1px solid rgba(255,215,0,0.3);
+color:gold;
+width:36px;
+height:36px;
+min-width:36px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+backdrop-filter:blur(3px);
+transition:transform .2s ease, background .2s ease, opacity .2s ease;
+z-index:2;
+}
+
+.players-arrow svg{
+width:16px;
+height:16px;
+}
+
+.players-arrow:hover{
+background:rgba(255,215,0,0.15);
+transform:scale(1.12);
+}
+
+.players-arrow-right{
+animation:playersArrowPulse 1.8s ease-in-out infinite;
+}
+
+.players-arrow-right:hover{
+animation:none;
+}
+
+@keyframes playersArrowPulse{
+0%,100%{transform:translateX(0)}
+50%{transform:translateX(4px)}
+}
+
+@media (min-width:900px){
+
+.player-item{
+width:calc(20% - 12px);
+}
+
+}
+
+@media (min-width:1300px){
+
+.player-item{
+width:calc(16.6% - 12px);
+}
+
+}
+
+/* ===== SIDEBAR RESPONSIVA (MOBILE) ===== */
+
+.sidebar-overlay{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+z-index:9998;
+}
+
+@media (max-width:768px){
+
+.sidebar{
+position:fixed !important;
+top:0 !important;
+left:0 !important;
+height:100vh !important;
+width:250px !important;
+max-width:80vw !important;
+margin:0 !important;
+background:#0e0e0e !important;
+border-right:1px solid rgba(255,215,0,0.25) !important;
+z-index:99997 !important;
+overflow-y:auto !important;
+-webkit-overflow-scrolling:touch;
+padding:80px 18px 30px !important;
+box-shadow:2px 0 25px rgba(0,0,0,0.7) !important;
+transform:translateX(-100%) !important;
+transition:transform .3s ease !important;
+box-sizing:border-box !important;
+}
+
+.sidebar.closed{
+transform:translateX(-100%) !important;
+}
+
+.sidebar:not(.closed){
+transform:translateX(0) !important;
+}
+
+.sidebar h3{
+color:gold !important;
+margin-bottom:14px !important;
+}
+
+.sidebar button{
+display:block !important;
+width:100% !important;
+text-align:left !important;
+margin:6px 0 !important;
+padding:12px 14px !important;
+border-radius:10px !important;
+background:#1b1b1b !important;
+color:#eee !important;
+border:1px solid #2a2a2a !important;
+}
+
+.sidebar button.active{
+background:gold !important;
+color:#111 !important;
+font-weight:700 !important;
+}
+
+body.sidebar-open .sidebar-overlay{
+display:block;
+}
+
+body.sidebar-open{
+overflow:hidden;
+}
+
+.sidebar-toggle{
+position:relative;
+z-index:99996;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HERO -->
+
+<!-- HERO -->
+
+<section class="hero">
+
+
+
+
+
+
+<!-- TOPO -->
+
+<div class="topbar">
+
+<div class="top-left">
+
+<button class="sidebar-toggle" onclick="toggleSidebar()">
+☰
+</button>
+
+<a
+class="logo-top"
+href="https://www.instagram.com/king_camisas01/"
+target="_blank"
+rel="noopener noreferrer"
+aria-label="Seguir no Instagram"
+>
+<svg viewBox="0 0 24 24" width="26" height="26">
+<defs>
+<radialGradient id="igGradientTop" cx="30%" cy="107%" r="150%">
+<stop offset="0%" stop-color="#fdf497"/>
+<stop offset="5%" stop-color="#fdf497"/>
+<stop offset="45%" stop-color="#fd5949"/>
+<stop offset="60%" stop-color="#d6249f"/>
+<stop offset="90%" stop-color="#285AEB"/>
+</radialGradient>
+</defs>
+<path fill="url(#igGradientTop)" d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 2 .24 2.4.4.6.24 1 .5 1.5 1s.76.9 1 1.5c.16.4.34 1.2.4 2.4.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.24 2-.4 2.4-.24.6-.5 1-1 1.5s-.9.76-1.5 1c-.4.16-1.2.34-2.4.4-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-2-.24-2.4-.4-.6-.24-1-.5-1.5-1s-.76-.9-1-1.5c-.16-.4-.34-1.2-.4-2.4C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.24-2 .4-2.4.24-.6.5-1 1-1.5s.9-.76 1.5-1c.4-.16 1.2-.34 2.4-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.52 0-4.76.07-.96.04-1.48.2-1.83.34-.46.18-.78.39-1.13.73-.34.34-.55.67-.73 1.13-.14.35-.3.87-.34 1.83C3.14 8.34 3.14 8.71 3.14 12s0 3.66.07 4.9c.04.96.2 1.48.34 1.83.18.46.39.78.73 1.13.34.34.67.55 1.13.73.35.14.87.3 1.83.34 1.24.06 1.61.07 4.76.07s3.52 0 4.76-.07c.96-.04 1.48-.2 1.83-.34.46-.18.78-.39 1.13-.73.34-.34.55-.67.73-1.13.14-.35.3-.87.34-1.83.06-1.24.07-1.61.07-4.9s0-3.66-.07-4.9c-.04-.96-.2-1.48-.34-1.83a3.02 3.02 0 0 0-.73-1.13 3.02 3.02 0 0 0-1.13-.73c-.35-.14-.87-.3-1.83-.34C15.52 4 15.15 4 12 4zm0 3.4a4.6 4.6 0 1 1 0 9.2 4.6 4.6 0 0 1 0-9.2zm0 1.8a2.8 2.8 0 1 0 0 5.6 2.8 2.8 0 0 0 0-5.6zm4.8-2a1.08 1.08 0 1 1 0 2.16 1.08 1.08 0 0 1 0-2.16z"/>
+</svg>
+</a>
+
+</div>
+
+<div class="top-search">
+
+<input
+type="text"
+id="searchTop"
+placeholder="Buscar camisa, seleção, retrô..."
+>
+
+</div>
+
+<div class="top-right">
+
+<button class="cart-top" onclick="toggleCart()">
+🛒
+<span id="cartCount">0</span>
+</button>
+
+</div>
+
+</div>
+
+
+
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<h3>COLEÇÕES</h3>
+
+<button onclick="filter('todos',this)">
+ Todas
+</button>
+
+<button onclick="filter('retro',this)">
+ Retrô
+</button>
+
+
+<button onclick="filter('brasil',this)">
+ Brasil
+</button>
+
+<button onclick="filter('selecoes',this)">
+ Seleções
+</button>
+
+<button onclick="filter('europa',this)">
+ Europa
+</button>
+
+<button onclick="filter('baby',this)">
+ Baby
+</button>
+
+
+<button onclick="filter('feminina',this)">
+ feminina
+</button>
+
+<button onclick="filter('promocao',this)">
+ Promoções 💸
+</button>
+
+</div>
+
+<div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+<!-- POPUP DE DESCONTO (CADASTRO) -->
+
+<div id="discountPopup" class="discount-popup-overlay">
+
+<div class="discount-popup-card">
+
+<button class="discount-popup-close" onclick="closeDiscountPopup()">✕</button>
+
+<div id="discountPopupContent">
+
+<div class="discount-popup-icon">🎁</div>
+
+<h2>Cadastre seu número</h2>
+
+<p>e ganhe <strong>R$10 OFF</strong> no seu pedido!</p>
+
+<input
+id="discountPhone"
+placeholder="Seu WhatsApp com DDD"
+type="tel"
+inputmode="numeric"
+>
+
+<button class="discount-popup-btn" onclick="registerDiscountPhone()">
+Cadastrar
+</button>
+
+<button class="discount-popup-link" onclick="dismissDiscountPopup()">
+Já tenho cadastro
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- HERO CONTENT -->
+
+<div class="hero-content">
+
+<img src="LOGO/kcbola.png" class="hero-logo">
+
+<h1>KINGS CAMISAS</h1>
+
+<p class="hero-sub">
+AS MELHORES CAMISAS IMPORTADAS
+</p>
+
+<div class="hero-line"></div>
+
+<p class="hero-text">
+Vista sua paixão. Faça história.
+</p>
+
+<button class="enter-btn" onclick="scrollCatalog()">
+VER CATÁLOGO
+</button>
+
+</div>
+
+</section>
+
+<!-- DESTAQUE CAMISA -->
+
+<section class="highlight">
+
+<div class="highlight-grid">
+
+<div class="highlight-item big">
+<img id="imgBig">
+</div>
+
+<div class="highlight-side">
+
+<div class="highlight-item">
+<img id="imgSmall1">
+</div>
+
+<div class="highlight-item">
+<img id="imgSmall2">
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CATALOGO -->
+
+<header id="catalog">
+<h1>KINGS CAMISAS</h1>
+</header>
+
+<!-- FILTRO POR JOGADOR / TIME -->
+
+<section class="players-filter">
+
+<h2 class="players-filter-title">Escolha seu time</h2>
+
+<div class="players-row-wrap">
+
+<button class="players-arrow players-arrow-left" onclick="scrollPlayers(-1)" aria-label="Ver anterior">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M15 6l-6 6 6 6"/>
+</svg>
+</button>
+
+<div class="players-row" id="playersRow">
+
+
+
+<div class="player-item" onclick="filterByTeam('flamengo',this)">
+<div class="player-circle"><img src="https://drive.google.com/thumbnail?id=1PvLRnI2n28GZV5LhwHNVds1UqR9jRil1&sz=w1200" alt="Flamengo" loading="lazy"></div>
+<span>Flamengo</span>
+</div>
+
+<div class="player-item" onclick="filterByTeam('atletico',this)">
+<div class="player-circle"><img src="https://drive.google.com/thumbnail?id=14spk1NBh9HNTlmgP8OLFiMhqI85rY56E&sz=w1200" alt="Atlético-MG" loading="lazy"></div>
+<span>Atlético-MG</span>
+</div>
+
+<div class="player-item" onclick="filterByTeam('cruzeiro',this)">
+<div class="player-circle"><img src="https://drive.google.com/thumbnail?id=1TqnbSM2LaR-XwTRNN6Xf0OQinsJJFeTo&sz=w1200" alt="Cruzeiro" loading="lazy"></div>
+<span>Cruzeiro</span>
+</div>
+
+<div class="player-item" onclick="filterByTeam('santos',this)">
+<div class="player-circle"><img src="https://drive.google.com/thumbnail?id=1K8pSkg6mX-VSg-Dc6zxLrJDoUL9F2DAT&sz=w1200" alt="Santos" loading="lazy"></div>
+<span>Santos</span>
+</div>
+
+<div class="player-item" onclick="filterByTeam('barcelona',this)">
+<div class="player-circle"><img src="https://drive.google.com/thumbnail?id=1A3h0HRt6o6wMAZLYF6wafo2Ddf-vzeUr&sz=w1200" alt="Barcelona" loading="lazy"></div>
+<span>Barcelona</span>
+</div>
+
+<div class="player-item" onclick="filterByTeam('realmadrid',this)">
+<div class="player-circle"><img src="https://drive.google.com/thumbnail?id=13a2muI1LP7UJlOGA6xEC_aG0kLY-L55-&sz=w1200" alt="Real Madrid" loading="lazy"></div>
+<span>Real Madrid</span>
+</div>
+
+<div class="player-item" onclick="filterByTeam('chelsea',this)">
+<div class="player-circle"><img src="https://drive.google.com/thumbnail?id=105sPhL67QdZaie42c_xRRu_dfXUzO3WN&sz=w1200" alt="Atlético-MG" loading="lazy"></div>
+<span>Chelsea</span>
+</div>
+
+<div class="player-item" onclick="filterByTeam('bayernmunich',this)">
+<div class="player-circle"><img src="https://drive.google.com/thumbnail?id=17IuGyeDEgXV0LtQNnUjMjrJcYCs1OisR&sz=w1200" alt="Bayern Munich" loading="lazy"></div>
+<span>Bayern Munich</span>
+</div>
+
+
+<div class="player-item" onclick="filterByTeam('corinthians',this)">
+<div class="player-circle"><img src="https://drive.google.com/thumbnail?id=13fEQCmOVy7vYzCCqS3BLjaz4tnesMfJs&sz=w1200" alt="Corinthians" loading="lazy"></div>
+<span>Corinthians</span>
+</div>
+
+<div class="player-item" onclick="filterByTeam('palmeiras',this)">
+<div class="player-circle"><img src="https://drive.google.com/thumbnail?id=1JdD8lrPrSPxtVwk_kPifcbWfrsB73tle&sz=w1200" alt="Palmeiras" loading="lazy"></div>
+<span>Palmeiras</span>
+</div>
+
+<div class="player-item all-item active" onclick="filterByTeam('todos',this)">
+<div class="player-circle">TODOS</div>
+<span>Todos</span>
+</div>
+
+</div>
+
+<button class="players-arrow players-arrow-right" onclick="scrollPlayers(1)" aria-label="Ver próximo">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M9 6l6 6-6 6"/>
+</svg>
+</button>
+
+</div>
+
+</section>
+
+<div id="devPanel" style="display:none;text-align:center;padding:20px">
+
+<button onclick="openAddProduct()" style="
+background:gold;
+border:none;
+padding:12px 25px;
+border-radius:20px;
+cursor:pointer;
+">
++ ADICIONAR PRODUTO
+</button>
+
+</div>
+
+<!-- FILTROS REMOVIDOS -->
+
+<div class="container" id="products"></div>
+
+
+
+
+<script src="/BACKEND/CAMISAS/products.js"></script>
+<script src="/BACKEND/CAMISAS/config.js"></script>
+
+<script>
+
+
+async function loadDriveFolder(folderId){
+
+try{
+
+const res = await fetch(
+`${CONFIG.GOOGLE_SCRIPT}?folder=${folderId}`
+)
+
+const data = await res.json()
+
+if(!data.success){
+
+console.error(data.error)
+
+return {
+images:[],
+videos:[]
+}
+
+}
+
+return data
+
+}catch(err){
+
+console.error(err)
+
+return {
+images:[],
+videos:[]
+}
+
+}
+
+}
+
+
+let devMode=false
+
+/* =========================
+   POPUP DE DESCONTO (CADASTRO)
+========================= */
+
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyw8Hk_qrdxduVBkY_5syDnM_x7085dIvR4gkLP3TRfLwbwYpgQYn-xhunbKavGobIj/exec"
+
+let discountPopupShown = false
+
+function abrirPopupDesconto(){
+
+/* NÃO MOSTRAR SE JÁ CADASTRADO OU JÁ FECHOU */
+
+if(discountPopupShown) return
+if(localStorage.getItem("clienteTelefone")) return
+if(sessionStorage.getItem("popupDescontoFechado")) return
+
+discountPopupShown = true
+
+document.getElementById("discountPopup").classList.add("show")
+
+}
+
+/* GATILHO: METADE DA PÁGINA */
+
+window.addEventListener("scroll",()=>{
+
+let alturaTotal = document.body.scrollHeight - window.innerHeight
+
+if(alturaTotal <= 0) return
+
+let percentualRolado = (window.scrollY / alturaTotal) * 100
+
+if(percentualRolado >= 50){
+
+abrirPopupDesconto()
+
+}
+
+})
+
+/* GATILHO: TEMPO NA PÁGINA */
+
+setTimeout(abrirPopupDesconto, 9000)
+
+function closeDiscountPopup(){
+
+document.getElementById("discountPopup").classList.remove("show")
+
+sessionStorage.setItem("popupDescontoFechado","true")
+
+}
+
+function dismissDiscountPopup(){
+
+/* CLIENTE DIZ QUE JÁ TEM CADASTRO */
+
+localStorage.setItem("clienteTelefone","ja_cadastrado")
+
+closeDiscountPopup()
+
+}
+
+/* GERA UM CUPOM ÚNICO PARA O CLIENTE */
+
+function generateDiscountCode(){
+
+const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"
+
+let code = "KC-"
+
+for(let i=0;i<6;i++){
+
+code += chars[Math.floor(Math.random()*chars.length)]
+
+}
+
+return code
+
+}
+
+/* CONSULTA NA PLANILHA (GOOGLE APPS SCRIPT) SE O NÚMERO JÁ EXISTE */
+
+async function checkPhoneExists(phone){
+
+try{
+
+let res = await fetch(
+`${GOOGLE_SCRIPT_URL}?action=check&phone=${phone}`
+)
+
+let data = await res.json()
+
+return !!(data && (data.exists === true || data.status === "exists"))
+
+}catch(err){
+
+console.error(err)
+
+return false
+
+}
+
+}
+
+/* GRAVA O NÚMERO + CUPOM GERADO NA PLANILHA */
+
+async function registerPhoneWithCode(phone, code){
+
+try{
+
+await fetch(GOOGLE_SCRIPT_URL,{
+
+method:"POST",
+
+body:new URLSearchParams({
+action:"register",
+phone:phone,
+code:code
+})
+
+})
+
+}catch(err){
+
+console.error(err)
+
+}
+
+}
+
+async function registerDiscountPhone(){
+
+let phone = document
+.getElementById("discountPhone")
+.value
+.replace(/\D/g,"")
+
+if(phone.length < 10){
+
+alert("Digite um número válido com DDD")
+return
+
+}
+
+let content = document.getElementById("discountPopupContent")
+
+content.innerHTML = `
+
+<div class="discount-popup-icon">⏳</div>
+
+<h2>Verificando cadastro...</h2>
+
+`
+
+/* 1) FILTRA NA PLANILHA SE O NÚMERO JÁ EXISTE */
+
+let jaCadastrado = await checkPhoneExists(phone)
+
+localStorage.setItem("clienteTelefone", phone)
+
+if(jaCadastrado){
+
+/* JÁ TEM CADASTRO -> APENAS AVISA E FECHA */
+
+content.innerHTML = `
+
+<div class="discount-popup-icon">✅</div>
+
+<h2>Showw, você já tem cadastro!</h2>
+
+<p>Obrigado por fazer parte da família KINGS, jogador(a) 🖤</p>
+
+`
+
+setTimeout(closeDiscountPopup, 2400)
+
+return
+
+}
+
+/* 2) NÃO EXISTE -> GERA UM CUPOM E REGISTRA NA PLANILHA */
+
+let code = generateDiscountCode()
+
+await registerPhoneWithCode(phone, code)
+
+localStorage.setItem("descontoCadastro","10")
+localStorage.setItem("codigoDescontoCliente", code)
+
+content.innerHTML = `
+
+<div class="discount-popup-icon">🎉</div>
+
+<h2>Cadastro realizado!</h2>
+
+<p>Seu cupom de <strong>R$10 OFF</strong>:</p>
+
+<p style="font-size:22px;letter-spacing:2px;color:gold;font-weight:800;margin:4px 0 10px">
+${code}
+</p>
+
+<p style="font-size:12px;color:#999">
+Ele já foi adicionado automaticamente no seu carrinho.
+</p>
+
+`
+
+renderCart()
+
+setTimeout(closeDiscountPopup, 3600)
+
+}
+
+
+/* COLEÇÕES EM DESTAQUE */
+
+const highlights=[
+
+{
+name:"BRASIL 2026",
+big:"https://drive.google.com/thumbnail?id=15M_sUyoxkX7jxZuitn0Kp42VZ9EZ9MHt&sz=w1000",
+small1:"https://drive.google.com/thumbnail?id=1vqJss-5VHnT8Wqh4R0ix88NWCx5uXa7p&sz=w1000",
+small2:"https://drive.google.com/thumbnail?id=1IQ7wiJ5bp6tQHQZymCpWV9NO6O1zEG8K&sz=w1000"
+},
+
+
+{
+name:"BRASIL FEMININA 2026",
+big:"https://drive.google.com/thumbnail?id=1D0UvU8HC-ggsT1eaQ3jAl2oKuatMidbH&sz=w1000",
+small1:"https://drive.google.com/thumbnail?id=1KDv2sgFIH0JTtSy55W3DTJ77PYZiA16N&sz=w1000",
+small2:"https://drive.google.com/thumbnail?id=1b-gMEM6CgVbYL5WZxhvT0RlrQn5IOW6p&sz=w1000"
+},
+
+{
+name:"BRASIL 2° 2026",
+big:"https://drive.google.com/thumbnail?id=1TQT_U_9F_JX4LuG1Kc5lqAU_tVcKrF1U&sz=w1000",
+small1:"https://drive.google.com/thumbnail?id=14w26cOCU80N7H99eJNvJvE6Mb0ySoeUs&sz=w1000",
+small2:"https://drive.google.com/thumbnail?id=15k6duM4GPOH6HQMnKblrxDXvnSDEZUz5&sz=w1000"
+}
+
+]
+
+let highlightIndex=0
+
+function preload(src){
+
+return new Promise(resolve=>{
+
+const img = new Image()
+
+img.src = src
+
+img.onload = resolve
+
+})
+
+}
+
+async function showHighlight(){
+
+let h = highlights[highlightIndex]
+
+/* PRELOAD */
+
+await Promise.all([
+
+preload(h.big),
+preload(h.small1),
+preload(h.small2)
+
+])
+
+const big =
+document.getElementById("imgBig")
+
+const small1 =
+document.getElementById("imgSmall1")
+
+const small2 =
+document.getElementById("imgSmall2")
+
+/* FADE OUT */
+
+big.style.opacity = 0
+small1.style.opacity = 0
+small2.style.opacity = 0
+
+setTimeout(()=>{
+
+big.src = h.big
+small1.src = h.small1
+small2.src = h.small2
+
+big.style.opacity = 1
+small1.style.opacity = 1
+small2.style.opacity = 1
+
+},300)
+
+highlightIndex++
+
+if(highlightIndex >= highlights.length){
+
+highlightIndex = 0
+
+}
+
+}
+
+showHighlight()
+setInterval(showHighlight,5000)
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+document
+.querySelector(".highlight-grid")
+.classList.add("show")
+
+}
+
+})
+
+})
+
+observer.observe(document.querySelector(".highlight-grid"))
+
+
+
+function scrollCatalog(){
+
+document
+.getElementById("catalog")
+.scrollIntoView({
+behavior:"smooth"
+})
+
+/* ESCONDER DESTAQUES */
+
+document.querySelector(".highlight")
+.style.display="none"
+
+}
+
+
+
+const container=document.getElementById("products")
+
+function render(list){
+
+container.innerHTML=""
+
+list.forEach((p)=>{
+
+let tag=p.ready
+?'<span class="tag ready">PRONTA ENTREGA</span>'
+:'<span class="tag order">POR ENCOMENDA</span>'
+
+container.innerHTML+=`
+
+<div class="card" onclick="openProduct('${p.name}')">
+
+<img src="${p.images[0]}">
+
+<div class="card-body">
+
+<h3>${p.name}</h3>
+
+${p.promotion ? `
+
+<div class="price-box">
+
+<span class="discount-badge">
+PROMOÇÃO
+</span>
+
+<span class="old-price">
+${p.oldPrice}
+</span>
+
+<span class="promo-price">
+${p.price}
+</span>
+
+</div>
+
+` : `
+
+<p class="price">${p.price}</p>
+
+`}
+
+${tag}
+
+</div>
+
+</div>
+
+`
+
+})
+
+}
+
+async function prepareProducts(){
+
+for(const product of products){
+
+if(product.folder){
+
+product.images =
+await loadDriveFolder(product.folder)
+
+}
+
+}
+
+render(products)
+
+}
+
+prepareProducts()
+
+function filter(cat,btn){
+
+/* FECHAR SIDEBAR NO MOBILE AO ESCOLHER UMA COLEÇÃO */
+
+if(window.innerWidth <= 768){
+
+document.querySelector(".sidebar").classList.add("closed")
+
+document.body.classList.remove("sidebar-open")
+
+}
+
+document.querySelectorAll(".filters button")
+.forEach(b=>b.classList.remove("active"))
+
+btn.classList.add("active")
+
+/* TODOS */
+
+if(cat==="todos"){
+
+render(products)
+return
+
+}
+
+/* PRONTA ENTREGA */
+
+if(cat==="pronta"){
+
+render(products.filter(p=>p.ready))
+return
+
+}
+
+/* PROMOÇÃO */
+
+if(cat==="promocao"){
+
+let promos = products.filter(p => p.promotion)
+
+render(promos)
+
+return
+
+}
+
+/* OUTRAS CATEGORIAS */
+
+let filtered = products.filter(p=>{
+
+if(Array.isArray(p.category)){
+
+return p.category.includes(cat)
+
+}
+
+return p.category===cat
+
+})
+
+render(filtered)
+
+}
+
+/* =========================
+   FILTRO POR JOGADOR / TIME
+========================= */
+
+const teamKeywords={
+
+flamengo:["flamengo"],
+atletico:["atletico","atlético","galo"],
+cruzeiro:["cruzeiro"],
+santos:["santos"],
+barcelona:["barcelona","barça","barca"],
+realmadrid:["real madrid","real-madrid","madrid"]
+
+}
+
+function normalizeText(str){
+
+return str
+.toLowerCase()
+.normalize("NFD")
+.replace(/[\u0300-\u036f]/g,"")
+
+}
+
+function filterByTeam(teamKey,el){
+
+document.querySelectorAll(".player-item")
+.forEach(i=>i.classList.remove("active"))
+
+if(el) el.classList.add("active")
+
+if(teamKey==="todos"){
+
+render(products)
+return
+
+}
+
+let keywords = teamKeywords[teamKey] || [teamKey]
+
+let filtered = products.filter(p=>{
+
+let n = normalizeText(p.name)
+
+return keywords.some(k=>n.includes(normalizeText(k)))
+
+})
+
+render(filtered)
+
+}
+
+function scrollPlayers(dir){
+
+const row = document.getElementById("playersRow")
+
+let amount = row.clientWidth * 0.7
+
+row.scrollBy({
+left: dir*amount,
+behavior:"smooth"
+})
+
+}
+
+function updatePlayersArrows(){
+
+const row = document.getElementById("playersRow")
+
+if(!row) return
+
+const left = document.querySelector(".players-arrow-left")
+const right = document.querySelector(".players-arrow-right")
+
+left.style.opacity = row.scrollLeft <= 5 ? "0.35" : "1"
+
+right.style.opacity =
+(row.scrollLeft + row.clientWidth >= row.scrollWidth - 5)
+? "0.35" : "1"
+
+}
+
+document.getElementById("playersRow")
+.addEventListener("scroll",updatePlayersArrows)
+
+window.addEventListener("load",updatePlayersArrows)
+window.addEventListener("resize",updatePlayersArrows)
+
+function openProduct(name){
+
+let p = products.find(prod => prod.name === name)
+
+currentProduct = p
+
+document.getElementById("modal").style.display="flex"
+
+document.getElementById("title").innerText=p.name
+
+document.getElementById("price").innerHTML = p.promotion ?
+
+`
+
+<div class="price-box">
+
+<span class="discount-badge">
+🔥 OFERTA ESPECIAL
+</span>
+
+<span class="old-price">
+${p.oldPrice}
+</span>
+
+<span class="promo-price">
+${p.price}
+</span>
+
+</div>
+
+`
+
+:
+
+`
+
+<div class="price-box">
+
+<span class="promo-price">
+${p.price}
+</span>
+
+</div>
+
+`
+
+document.getElementById("desc").innerHTML = Array.isArray(p.desc) 
+? p.desc.join("<br>") 
+: p.desc
+document.getElementById("mainImg").src=p.images[0]
+let video=document.getElementById("productVideo")
+
+if(p.video){
+
+video.src=p.video
+video.style.display="block"
+
+}else{
+
+video.style.display="none"
+video.src=""
+
+}
+
+
+let thumbs=""
+
+p.images.forEach(img=>{
+thumbs+=`<img src="${img}" onclick="changeImg('${img}')">`
+})
+
+document.getElementById("thumbs").innerHTML=thumbs
+
+let sizes=""
+
+p.sizes.forEach(s=>{
+sizes+=`<span>${s}</span>`
+})
+
+document.getElementById("sizes").innerHTML=sizes
+
+document.getElementById("status").innerHTML=p.ready
+?'<span class="tag ready">PRONTA ENTREGA</span>'
+:'<span class="tag order">POR ENCOMENDA</span>'
+
+let msg=encodeURIComponent(
+"Olá, tenho interesse na camisa "+p.name
+)
+
+document.getElementById("buy").href=
+"https://wa.me/5538999624223?text="+msg
+
+}
+
+function changeImg(src){
+document.getElementById("mainImg").src=src
+}
+
+function closeModal(){
+document.getElementById("modal").style.display="none"
+}
+
+document
+.getElementById("searchTop")
+.addEventListener("input",e=>{
+
+let v = e.target.value.toLowerCase()
+
+let filtered = products.filter(p=>
+p.name.toLowerCase().includes(v)
+)
+
+render(filtered)
+
+})
+
+
+function openAddProduct(){
+
+document.getElementById("addProductModal").style.display="flex"
+
+}
+
+function saveProduct(){
+
+let name=document.getElementById("newName").value
+let price=document.getElementById("newPrice").value
+let cat=document.getElementById("newCategory").value
+let sizes=document.getElementById("newSizes").value.split(",")
+let folder=document.getElementById("newFolder").value
+let desc=document.getElementById("newDesc").value
+
+let newProduct={
+
+name:name,
+price:price,
+category:cat,
+ready:true,
+sizes:sizes,
+desc:desc,
+
+images:[
+
+folder+"/FRENTE.JPG",
+folder+"/TRAS.JPG",
+folder+"/ESCUDO.JPG",
+folder+"/GOLA.JPG",
+folder+"/MANGA.JPG"
+
+]
+
+}
+
+products.push(newProduct)
+
+render(products)
+
+document.getElementById("addProductModal").style.display="none"
+
+}
+
+let cart=[]
+
+let currentProduct=null 
+
+
+function addToCart(){
+
+if(!currentProduct) return
+
+let existing=cart.find(item=>item.name===currentProduct.name)
+
+if(existing){
+
+existing.qty++
+
+}else{
+
+cart.push({
+name:currentProduct.name,
+price:parseFloat(
+currentProduct.price.replace("R$","")
+),
+image:currentProduct.images[0],
+qty:1
+})
+
+}
+
+renderCart()
+
+}
+
+function toggleCart(){
+
+document
+.getElementById("cart")
+.classList.toggle("show")
+
+}
+
+function renderCart(){
+
+let cartItems=document.getElementById("cartItems")
+
+cartItems.innerHTML=""
+
+let subtotal=0
+let totalQty=0
+
+cart.forEach((item,index)=>{
+
+subtotal += item.price * item.qty
+totalQty += item.qty
+
+cartItems.innerHTML += `
+
+<div class="cart-item">
+
+<img src="${item.image}">
+
+<div class="cart-info">
+
+<h4>${item.name}</h4>
+
+<p class="cart-price">
+R$${item.price}
+</p>
+
+<div class="qty">
+
+<button onclick="changeQty(${index},-1)">
+-
+</button>
+
+<span>${item.qty}</span>
+
+<button onclick="changeQty(${index},1)">
++
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+`
+
+})
+
+/* DESCONTO POR QUANTIDADE */
+
+let discount = 0
+
+if(totalQty >= 4){
+
+discount = subtotal * 0.10
+
+}
+
+/* TOTAL */
+
+let total = subtotal - discount
+
+if(total < 0){
+
+total = 0
+
+}
+
+/* ATUALIZAR HTML */
+
+document.getElementById("cartSubtotal")
+.innerText = `R$${subtotal.toFixed(2)}`
+
+document.getElementById("cartDiscount")
+.innerText = `R$${discount.toFixed(2)}`
+
+document.getElementById("cartTotal")
+.innerText = `R$${total.toFixed(2)}`
+
+document.getElementById("cartCount")
+.innerText = totalQty
+
+}
+
+function changeQty(index,change){
+
+cart[index].qty += change
+
+if(cart[index].qty <= 0){
+
+cart.splice(index,1)
+
+}
+
+renderCart()
+
+}
+
+
+function finishOrder(){
+
+if(cart.length===0){
+
+alert("Carrinho vazio")
+return
+
+}
+
+let msg="🛒 *NOVO PEDIDO*%0A%0A"
+
+let subtotal=0
+let totalQty=0
+
+cart.forEach(item=>{
+
+subtotal += item.price * item.qty
+
+totalQty += item.qty
+
+msg += `• ${item.name}%0A`
+msg += `Qtd: ${item.qty}%0A`
+msg += `Valor: R$${item.price}%0A%0A`
+
+})
+
+let discount=0
+
+if(totalQty>=4){
+
+discount=subtotal*0.10
+
+}
+
+let total = subtotal - discount
+
+if(total < 0){
+
+total = 0
+
+}
+
+msg += `--------------------%0A`
+msg += `Subtotal: R$${subtotal.toFixed(2)}%0A`
+msg += `Desconto: R$${discount.toFixed(2)}%0A`
+
+msg += `TOTAL: R$${total.toFixed(2)}`
+
+window.open(
+`https://wa.me/5538999624223?text=${msg}`,
+"_blank"
+)
+
+}
+
+
+
+/* =========================
+   TOGGLE SIDEBAR
+========================= */
+
+function toggleSidebar(){
+
+const sidebar = document.querySelector(".sidebar")
+
+sidebar.classList.toggle("closed")
+
+document.body.classList.toggle(
+"sidebar-open",
+!sidebar.classList.contains("closed")
+)
+
+}
+
+document.querySelector(".sidebar").classList.add("closed")
+
+</script>
+<!-- CARRINHO -->
+
+
+
+
+
+
+<div class="cart" id="cart">
+
+<div class="cart-header">
+
+<h2>Seu Carrinho</h2>
+
+<button onclick="toggleCart()">✕</button>
+
+</div>
+
+
+<div class="cart-content">
+
+<!-- ESQUERDA -->
+<div class="cart-left">
+
+<div id="cartItems"></div>
+
+</div>
+
+<!-- DIREITA -->
+<div class="cart-right">
+
+<div class="summary-line">
+<span>Subtotal</span>
+<span id="cartSubtotal">R$0</span>
+</div>
+
+<div class="summary-line">
+<span>Desconto</span>
+<span id="cartDiscount">R$0</span>
+</div>
+
+<div class="summary-total">
+<span>Total</span>
+<span id="cartTotal">R$0</span>
+</div>
+
+<button class="finish-btn" onclick="finishOrder()">
+<svg class="wa-icon" viewBox="0 0 32 32" fill="currentColor">
+<path d="M16.03 3C9.4 3 4 8.4 4 15.03c0 2.23.6 4.32 1.65 6.12L4 29l8.03-1.6a12.9 12.9 0 0 0 3.99.63C22.66 28 28 22.6 28 15.97 28 9.4 22.66 3 16.03 3zm0 23.4c-1.28 0-2.53-.24-3.7-.7l-.27-.1-4.77.95.98-4.63-.17-.28a10.3 10.3 0 0 1-1.6-5.6c0-5.7 4.65-10.34 10.36-10.34 5.7 0 10.34 4.65 10.34 10.34 0 5.7-4.63 10.36-10.34 10.36zm5.7-7.75c-.3-.16-1.86-.92-2.15-1.02-.29-.1-.5-.16-.72.16-.2.3-.83 1.02-1.02 1.24-.19.2-.38.23-.7.08-.3-.16-1.28-.47-2.44-1.5-.9-.8-1.5-1.8-1.68-2.1-.18-.3-.02-.47.13-.62.14-.14.3-.37.46-.55.15-.19.2-.32.3-.53.1-.2.05-.4-.02-.55-.08-.16-.72-1.74-1-2.38-.26-.62-.53-.54-.72-.55h-.6c-.2 0-.53.08-.8.4-.29.3-1.1 1.08-1.1 2.63 0 1.55 1.13 3.05 1.28 3.26.16.2 2.2 3.37 5.35 4.72.75.33 1.33.52 1.79.66.75.24 1.43.2 1.97.13.6-.1 1.86-.76 2.13-1.5.26-.72.26-1.35.18-1.48-.07-.14-.27-.22-.57-.36z"/>
+</svg>
+<span>Finalizar pedido no WhatsApp</span>
+<svg class="wa-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M9 6l6 6-6 6"/>
+</svg>
+</button>
+
+</div>
+
+</div>
+
+
+<div class="modal" id="modal">
+
+<div class="close" onclick="closeModal()">✕</div>
+
+<div class="modal-box">
+
+<div class="gallery">
+<img id="mainImg">
+</div>
+
+<div class="thumbs" id="thumbs"></div>
+
+
+<div class="modal-body">
+
+<h2 id="title"></h2>
+<p class="price" id="price"></p>
+
+<div class="sizes" id="sizes"></div>
+<div class="desc" id="desc"></div>
+<div id="status"></div>
+
+<div class="actions">
+
+<button class="cart-btn" onclick="addToCart()">
+🛒 Adicionar
+</button>
+
+<a id="buy" class="buy" target="_blank">
+Comprar Agora
+</a>
+
+</div>
+
+
+<iframe
+id="productVideo"
+allow="autoplay"
+allowfullscreen
+style="
+width:100%;
+height:320px;
+border:none;
+display:none;
+border-radius:12px;
+">
+</iframe>
+
+
+</div>
+</div>
+</div>
+<div id="addProductModal" class="modal">
+
+<div class="modal-box">
+
+<div class="modal-body">
+
+<h2>Novo Produto</h2>
+
+<input id="newName" placeholder="Nome"><br><br>
+
+<input id="newPrice" placeholder="Preço"><br><br>
+
+<input id="newCategory" placeholder="Categoria"><br><br>
+
+<input id="newSizes" placeholder="Tamanhos (P,M,G)"><br><br>
+
+<input id="newFolder" placeholder="Pasta imagens EX: IMAGENS/FLAMENGO-26"><br><br>
+
+<textarea id="newDesc" placeholder="Descrição"></textarea><br><br>
+
+<button onclick="saveProduct()">Salvar</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+</body>
+</html>
